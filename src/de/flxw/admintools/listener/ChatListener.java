@@ -15,7 +15,6 @@ import java.util.*;
 public class ChatListener implements Listener {
     public ChatListener(AdminTools adminTools) {}
 
-
     @EventHandler
     public static void onChat(AsyncPlayerChatEvent evt)
     {
@@ -36,7 +35,6 @@ public class ChatListener implements Listener {
             {
                 MuteManager.unmute(player.getUniqueId().toString());
             }
-
         }
 
         if(Command_Lockchat.isChatLocked == true)
@@ -51,7 +49,6 @@ public class ChatListener implements Listener {
         if(ArrayLists.censor.contains(player))
         {
             String msg = evt.getMessage();
-
             for(Player all : Bukkit.getOnlinePlayers())
             {
                 evt.setFormat("§c§k" + player.getDisplayName()+ "§r§8» §7" + msg);

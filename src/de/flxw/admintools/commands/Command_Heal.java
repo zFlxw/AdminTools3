@@ -57,7 +57,7 @@ public class Command_Heal implements CommandExecutor {
                             }
                             else
                             {
-                                player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.IsBypassingMessage.replaceAll("%bypass%", "heal"));
+                                player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().IsBypassingMessage.replaceAll("%bypass%", "heal"));
                             }
                         }
                         else

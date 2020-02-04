@@ -13,7 +13,6 @@ public class DamageListener implements Listener {
         this.pl = adminTools;
     }
 
-
     @EventHandler
     public static void onPlayerDamage(EntityDamageEvent evt)
     {

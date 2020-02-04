@@ -18,7 +18,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class JoinListener implements Listener {
     public JoinListener(AdminTools adminTools) {}
-
     private static String PERM_TEAMJOIN = "admintools.teamjoin";
     private static String PERM_UPDATEINFO = "admintools.updateinfo";
 
@@ -38,8 +37,8 @@ public class JoinListener implements Listener {
                 String ip = PlayerInfoManager.getPlayerIp(uuid);
                 String first_joined = PlayerInfoManager.getFirstJoined(uuid);
                 long last_seen = System.currentTimeMillis();
-
                 MySQL.update("DELETE FROM PlayerInfo WHERE UUID='"+uuid+"'");
+
                 if(AdminTools.getInstance().LogIP)
                 {
                     MySQL.update("INSERT INTO PlayerInfo (PLAYERNAME, UUID, IP_ADDRESS, FIRST_JOINED, LAST_JOINED) VALUES ('"+playername+"','"+uuid+"','"+ip+"','"+first_joined+"','"+last_seen+"')");
@@ -56,6 +55,7 @@ public class JoinListener implements Listener {
                 String ip = player.getAddress().getAddress().getHostAddress();
                 long first_joined = System.currentTimeMillis();
                 long last_seen = System.currentTimeMillis();
+
                 if(AdminTools.getInstance().LogIP)
                 {
                     MySQL.update("INSERT INTO PlayerInfo (PLAYERNAME, UUID, IP_ADDRESS, FIRST_JOINED, LAST_JOINED) VALUES ('"+playername+"','"+uuid+"','"+ip+"','"+first_joined+"','"+last_seen+"')");

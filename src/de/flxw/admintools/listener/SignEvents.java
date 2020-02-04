@@ -33,19 +33,16 @@ public class SignEvents implements Listener {
             {
                 evt.setLine(0, "§8«§9§lFREE§8»");
             }
-
-            if(evt.getLine(1).equalsIgnoreCase(""))
+            else if(evt.getLine(1).equalsIgnoreCase(""))
             {
                 player.sendMessage(AdminTools.getInstance().Prefix + "§cplease enter a valid ID!");
             }
-
-            if(!evt.getLine(2).equalsIgnoreCase(""))
+            else if(!evt.getLine(2).equalsIgnoreCase(""))
             {
                 evt.setLine(2, ChatColor.translateAlternateColorCodes('&', evt.getLine(2)));
             }
         }
     }
-
     @EventHandler
     public static void onPlayerInteract(PlayerInteractEvent evt)
     {
@@ -59,7 +56,8 @@ public class SignEvents implements Listener {
 
                 if(sign.getLine(0).equals("§8«§9§lFREE§8»"))
                 {
-                    try {
+                    try
+                    {
                         String[] string = sign.getLine(1).split(":");
                         String name = sign.getLine(2);
                         String colorname = ChatColor.translateAlternateColorCodes('&', name);
@@ -95,7 +93,9 @@ public class SignEvents implements Listener {
                         }
                         player.openInventory(inv);
 
-                    } catch(NumberFormatException ex) {
+                    }
+                    catch(NumberFormatException ex)
+                    {
                         player.sendMessage(AdminTools.getInstance().Prefix + "§aNo valid ID (§c" + sign.getLine(1) + "§a)");
                     }
                 }

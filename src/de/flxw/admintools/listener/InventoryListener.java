@@ -25,7 +25,6 @@ public class InventoryListener implements Listener {
     public static void onInvClick(InventoryClickEvent evt)
     {
         Player player = (Player) evt.getWhoClicked();
-
         if(evt.getClickedInventory() != null && evt.getWhoClicked() != null)
         {
             if (evt.getClickedInventory().getName().equals("§c§lTime"))

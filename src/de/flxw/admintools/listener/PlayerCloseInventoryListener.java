@@ -8,8 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 
 public class PlayerCloseInventoryListener implements Listener {
-    public PlayerCloseInventoryListener(AdminTools adminTools) {
-    }
+    public PlayerCloseInventoryListener(AdminTools adminTools) {}
 
     @EventHandler
     public static void onInvClose(InventoryCloseEvent evt)

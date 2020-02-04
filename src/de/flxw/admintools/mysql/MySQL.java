@@ -21,60 +21,80 @@ public class MySQL {
     public static String port;
     public static Connection con;
 
-    public static void connect() {
-        try {
+    public static void connect()
+    {
+        try
+        {
             con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password);
             Bukkit.getConsoleSender().sendMessage(AdminTools.getInstance().Prefix + "§a MySQL Connection successfully connected");
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             e.printStackTrace();
         }
     }
-
-    public static void closeConnection() {
-        if(isConnected()) {
-            try {
+    public static void disconnect()
+    {
+        if(isConnected())
+        {
+            try
+            {
                 con.close();
-                Bukkit.getConsoleSender().sendMessage(AdminTools.getInstance().Prefix + "§a MySQL Connection successfully closed!");
-            } catch (SQLException e) {
+                Bukkit.getConsoleSender().sendMessage(AdminTools.getInstance().Prefix + "§a MySQL Connection successfully disconnected!");
+            }
+            catch (SQLException e)
+            {
                 e.printStackTrace();
             }
         }
     }
-
-    public static boolean isConnected() {
+    public static boolean isConnected()
+    {
         return con != null;
     }
-
-    public static void createTable() {
-        try {
+    public static void createTable()
+    {
+        try
+        {
             con.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS BannedPlayers (PLAYERNAME VARCHAR(16), UUID VARCHAR(100), ENDBAN VARCHAR(100), REASON VARCHAR(100), STAFF VARCHAR(100))");
             con.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS MutedPlayers (PLAYERNAME VARCHAR(16), UUID VARCHAR(100), ENDMUTE VARCHAR(100), REASON VARCHAR(100), STAFF VARCHAR(100))");
             con.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS PlayerInfo (PLAYERNAME VARCHAR(16), UUID VARCHAR(100), IP_ADDRESS VARCHAR(100), FIRST_JOINED VARCHAR(190), LAST_JOINED VARCHAR(190))");
 
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             e.printStackTrace();
         }
     }
-
-    public static void update(String qry) {
-        if(isConnected()) {
-            try {
+    public static void update(String qry)
+    {
+        if(isConnected())
+        {
+            try
+            {
                 con.createStatement().executeUpdate(qry);
-            } catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
             }
         }
     }
-
-    public static ResultSet getResult(String qry) {
-        if(isConnected()) {
-            try {
+    public static ResultSet getResult(String qry)
+    {
+        if(isConnected())
+        {
+            try
+            {
                 return con.createStatement().executeQuery(qry);
-            } catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
             }
         }
         return null;
     }
-
     public static String getCountry(InetSocketAddress ip) throws Exception
     {
         URL url = new URL("https://freegeoip.app/json/" + ip.getHostName());

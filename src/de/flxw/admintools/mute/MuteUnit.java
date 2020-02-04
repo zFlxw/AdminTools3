@@ -1,7 +1,5 @@
 package de.flxw.admintools.mute;
 
-import de.flxw.admintools.ban.BanUnit;
-
 import java.util.ArrayList;
 import java.util.List;
 

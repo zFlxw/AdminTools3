@@ -20,7 +20,6 @@ public class PlayerLoginListener implements Listener {
             {
                 long current = System.currentTimeMillis();
                 long end = BanManager.getEnd(player.getUniqueId().toString());
-
                 if(current < end || end == -1)
                 {
                     String banHeader = AdminTools.getInstance().BanHeader;

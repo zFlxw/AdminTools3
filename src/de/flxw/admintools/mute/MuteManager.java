@@ -14,7 +14,7 @@ import java.util.List;
 public class MuteManager {
     public static void mute(String uuid, String playername, String Staff, String Reason, long seconds)
     {
-        long end = 0;
+        long end;
         if(seconds == -1)
         {
             end = -1;
@@ -53,10 +53,11 @@ public class MuteManager {
         }
         return false;
     }
-    public static String getReason(String uuid) {
+    public static String getReason(String uuid)
+    {
         ResultSet rs = MySQL.getResult("SELECT * FROM MutedPlayers WHERE UUID='"+uuid+"'");
-
-        try {
+        try
+        {
             while(rs.next())
             {
                 return rs.getString("REASON");
@@ -78,10 +79,12 @@ public class MuteManager {
         }
         catch(SQLException ex)
         {
+            ex.printStackTrace();
         }
         return null;
     }
-    public static List<String> getMutedPlayers() {
+    public static List<String> getMutedPlayers()
+    {
         List<String> list = new ArrayList<>();
         ResultSet rs = MySQL.getResult("SELECT * FROM MutedPlayers");
 
@@ -98,8 +101,8 @@ public class MuteManager {
         }
         return list;
     }
-
-    public static String getUnbandate(String uuid) {
+    public static String getUnbandate(String uuid)
+    {
         long current = System.currentTimeMillis();
         long end = getEnd(uuid);
         if(end == -1)
@@ -111,5 +114,4 @@ public class MuteManager {
         sdf.setTimeZone(now.getTimeZone());
         return sdf.format(end);
     }
-
 }

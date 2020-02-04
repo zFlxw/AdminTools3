@@ -11,7 +11,8 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.Arrays;
 
-public class ATCenterInv {
+public class ATCenterInv
+{
     public static String PLUGIN_VERSION = AdminTools.getInstance().getDescription().getVersion();
 
     public static void AdminMainInv(Player player)
@@ -76,7 +77,6 @@ public class ATCenterInv {
         mClose.setDisplayName("§c§lClose");
         sClose.setItemMeta(mClose);
 
-
         inventory.setItem(0, sCommands);
         inventory.setItem(1, placeholder);
         inventory.setItem(2, placeholder);
@@ -89,7 +89,6 @@ public class ATCenterInv {
 
         player.openInventory(inventory);
     }
-
     public static void AdminCommandsInv(Player player)
     {
         Inventory inventory = Bukkit.createInventory(null, 4*9, "§c§lAT Commands §7§l| §9Page 1");
@@ -167,16 +166,16 @@ public class ATCenterInv {
         mClose.setDisplayName("§c§lBack");
         sClose.setItemMeta(mClose);
 
-        inventory.setItem( 0, sGamemode);
-        inventory.setItem( 1, placeholder);
-        inventory.setItem( 2, sFly);
-        inventory.setItem( 3, placeholder);
-        inventory.setItem( 4, sGod);
-        inventory.setItem( 5, placeholder);
-        inventory.setItem( 6, sHeal);
-        inventory.setItem( 7, placeholder);
-        inventory.setItem( 8, sFeed);
-        inventory.setItem( 9, placeholder);
+        inventory.setItem(0, sGamemode);
+        inventory.setItem(1, placeholder);
+        inventory.setItem(2, sFly);
+        inventory.setItem(3, placeholder);
+        inventory.setItem(4, sGod);
+        inventory.setItem(5, placeholder);
+        inventory.setItem(6, sHeal);
+        inventory.setItem(7, placeholder);
+        inventory.setItem(8, sFeed);
+        inventory.setItem(9, placeholder);
         inventory.setItem(10, sInvsee);
         inventory.setItem(11, placeholder);
         inventory.setItem(12, sClearChat);
@@ -206,7 +205,6 @@ public class ATCenterInv {
 
         player.openInventory(inventory);
     }
-
     public static void AdminGamemodeInv(Player player)
     {
         Inventory inventory = Bukkit.createInventory(null, 9, "§c§lAT Gamemode §7§l| §9" + PLUGIN_VERSION);
@@ -261,7 +259,6 @@ public class ATCenterInv {
 
         player.openInventory(inventory);
     }
-
     public static void AdminInvseePlayersInv(Player player)
     {
         Player[] onlinePlayers = Bukkit.getOnlinePlayers().toArray(new Player[Bukkit.getOnlinePlayers().size()]);
@@ -275,8 +272,10 @@ public class ATCenterInv {
             player.sendMessage(AdminTools.getInstance().Prefix + "§cUnverified access. You're already in an inventory. If you think this is an error, contact an server administrator");
             return;
         }
-        for(Player all : Bukkit.getOnlinePlayers()) {
-            if(Bukkit.getOnlinePlayers().size() < 54) {
+        for(Player all : Bukkit.getOnlinePlayers())
+        {
+            if(Bukkit.getOnlinePlayers().size() < 54)
+            {
                 String n = all.getName();
 
                 ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
@@ -293,9 +292,7 @@ public class ATCenterInv {
             }
         }
         player.openInventory(playerInventory);
-
     }
-
     public static void AdminBypassInv(Player player)
     {
         Inventory inventory = Bukkit.createInventory(null, 4*9, "§c§lAT Bypass §7| §9Page 1");
@@ -393,33 +390,22 @@ public class ATCenterInv {
         mCurrentpage.setDisplayName("§aPage: §21");
         sCurrentpage.setItemMeta(mCurrentpage);
 
+        for(int i = 0; i <36; i++)
+        {
+            inventory.setItem(i, placeholder);
+        }
         inventory.setItem(0, sGm);
-        inventory.setItem(1, placeholder);
         inventory.setItem(2, sFly);
-        inventory.setItem(3, placeholder);
         inventory.setItem(4, sGod);
-        inventory.setItem(5, placeholder);
         inventory.setItem(6, sLockchat);
-        inventory.setItem(7, placeholder);
         inventory.setItem(8, sLockchat);
-        inventory.setItem(9, placeholder);
         inventory.setItem(10, sVanish);
-        inventory.setItem(11, placeholder);
         inventory.setItem(12, sHeal);
-        inventory.setItem(13, placeholder);
         inventory.setItem(14, sFeed);
-        inventory.setItem(15, placeholder);
         inventory.setItem(16, sInvsee);
-        inventory.setItem(17, placeholder);
         inventory.setItem(18, sKill);
-        inventory.setItem(19, placeholder);
         inventory.setItem(20, censor);
-        inventory.setItem(21, placeholder);
         inventory.setItem(22, freeze);
-        inventory.setItem(23, placeholder);
-        inventory.setItem(24, placeholder);
-        inventory.setItem(25, placeholder);
-        inventory.setItem(26, placeholder);
         inventory.setItem(27, sPlaceholder);
         inventory.setItem(28, sPlaceholder);
         inventory.setItem(29, sPlaceholder);

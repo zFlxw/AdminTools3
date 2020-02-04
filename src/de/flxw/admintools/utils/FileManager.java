@@ -2,7 +2,6 @@ package de.flxw.admintools.utils;
 
 import de.flxw.admintools.mysql.MySQL;
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -11,30 +10,22 @@ import java.io.IOException;
 
 public class FileManager {
 
-    public static File getConfigFile() {
-        return new File("plugins/AdminTools v3", "config.yml");
-    }
-    public static FileConfiguration getConfigFileConfiguration() {
-        return YamlConfiguration.loadConfiguration(getConfigFile());
-    }
+    public static File getConfigFile() {return new File("plugins/AdminTools v3", "config.yml");}
+    public static FileConfiguration getConfigFileConfiguration() {return YamlConfiguration.loadConfiguration(getConfigFile());}
+    public static File getMySQL() {return new File("plugins/AdminTools v3", "mysql.yml");}
+    public static FileConfiguration getMySQLConfig() {return YamlConfiguration.loadConfiguration(getMySQL());}
 
-    public static File getMySQL() {
-        return new File("plugins/AdminTools v3", "mysql.yml");
-    }
-    public static FileConfiguration getMySQLConfig() {
-        return YamlConfiguration.loadConfiguration(getMySQL());
-    }
-
-    public static void setStandardConfig() {
+    public static void setStandardConfig()
+    {
         if(!getConfigFile().exists())
         {
             new FileCopy().copy(AdminTools.getInstance().getResource("config.yml"), getConfigFile());
         }
     }
-
-    public static void readConfig() {
+    public static void readConfig()
+    {
         FileConfiguration cfg = getConfigFileConfiguration();
-        boolean mysql = cfg.getBoolean("mysql");
+
         String prefix = cfg.getString("Prefixes.mainPrefix");
         String muteprefix = cfg.getString("Prefixes.mutePrefix");
         String banprefix = cfg.getString("Prefixes.banPrefix");
@@ -88,8 +79,6 @@ public class FileManager {
         String givewayWinMessage = cfg.getString("GiveawayConfig.giveawayWinnerMessage");
         String freezeTitle1 = cfg.getString("FreezeConfig.freezeTitle1");
         String freezeTitle2 = cfg.getString("FreezeConfig.freezeTitle2");
-        boolean denyBuildWhileFreezed = cfg.getBoolean("FreezeConfig.denyBuildWhileFreezed");
-        int giveawaycount = cfg.getInt("GiveawayConfig.giveawaySeconds");
         String giveawaynot = cfg.getString("GiveawayConfig.giveawayNotEnoughPlayers");
         String giveawaystart = cfg.getString("GiveawayConfig.giveawayStarted");
         String godmode = cfg.getString("ChatMessages.godmodeMessage");
@@ -105,9 +94,6 @@ public class FileManager {
         String lockchatdeny = cfg.getString("ChatMessages.lockchatDenyMessage");
         String alreadyMuted = cfg.getString("MuteMessages.alreadyMuted");
         String staffMute = cfg.getString("MuteMessages.staffMessage");
-        int pingLightgreen = cfg.getInt("Settings.pingLightgreen");
-        int pingDarkgreen = cfg.getInt("Settings.pingDarkgreen");
-        int pingLightred = cfg.getInt("Settings.pingLightred");
         String rename = cfg.getString("ChatMessages.renameMessage");
         String renamevalid = cfg.getString("ChatMessages.renameValidItem");
         String renamecolorwarning = cfg.getString("ChatMessages.renameColorcodesWarning");
@@ -157,17 +143,12 @@ public class FileManager {
         String adminchatalreadylogoff = cfg.getString("ChatMessages.adminchatAlreadyLogOffMessage");
         String antiban = cfg.getString("BanConfig.cannotBanMessage");
         String antimute = cfg.getString("MuteMessages.cannotMuteMessage");
-        boolean modt = cfg.getBoolean("Settings.modt");
         String modtline1 = cfg.getString("Settings.modtLine1");
         String modtline2 = cfg.getString("Settings.modtLine2");
-        int maxplayers = cfg.getInt("Settings.maxPlayers");
-        boolean unknown = cfg.getBoolean("Settings.unknownCommand");
         String unknowncommand = cfg.getString("Settings.unknownCommandMessage");
-        boolean logip = cfg.getBoolean("Settings.logIpAddress");
         String publictime = cfg.getString("ChatMessages.timeMessage");
         String msgerror = cfg.getString("ChatMessages.msgReplyToYourselfMessage");
         String adminchat = cfg.getString("ChatMessages.adminchatRespondMessage");
-        boolean updatemessage = cfg.getBoolean("Settings.disableUpdateMessageOnJoin");
         prefix = ChatColor.translateAlternateColorCodes('&', prefix);
         banprefix = ChatColor.translateAlternateColorCodes('&', banprefix);
         muteprefix = ChatColor.translateAlternateColorCodes('&', muteprefix);
@@ -288,6 +269,8 @@ public class FileManager {
         noLongerHatCommandMessage = ChatColor.translateAlternateColorCodes('&', noLongerHatCommandMessage);
         hatCommandMessage = ChatColor.translateAlternateColorCodes('&', hatCommandMessage);
         adminchatalreadylogon = ChatColor.translateAlternateColorCodes('&', adminchatalreadylogon);
+        boolean modt = cfg.getBoolean("Settings.modt");
+        boolean unknown = cfg.getBoolean("Settings.unknownCommand");
         if(modt)
         {
             modtline1 = ChatColor.translateAlternateColorCodes('&', modtline1);
@@ -297,6 +280,15 @@ public class FileManager {
         {
             unknowncommand = ChatColor.translateAlternateColorCodes('&', unknowncommand);
         }
+        boolean mysql = cfg.getBoolean("mysql");
+        boolean denyBuildWhileFreezed = cfg.getBoolean("FreezeConfig.denyBuildWhileFreezed");
+        boolean logip = cfg.getBoolean("Settings.logIpAddress");
+        boolean updatemessage = cfg.getBoolean("Settings.disableUpdateMessageOnJoin");
+        int giveawaycount = cfg.getInt("GiveawayConfig.giveawaySeconds");
+        int pingLightgreen = cfg.getInt("Settings.pingLightgreen");
+        int pingDarkgreen = cfg.getInt("Settings.pingDarkgreen");
+        int pingLightred = cfg.getInt("Settings.pingLightred");
+        int maxplayers = cfg.getInt("Settings.maxPlayers");
         AdminTools.getInstance().Prefix = prefix;
         AdminTools.getInstance().BanPrefix = banprefix;
         AdminTools.getInstance().MutePrefix = muteprefix;
@@ -432,8 +424,8 @@ public class FileManager {
         AdminTools.getInstance().Banned = banned;
         AdminTools.getInstance().MySQLcon = mysql;
     }
-
-    public static void setMySQL() {
+    public static void setMySQL()
+    {
         FileConfiguration cfg = getMySQLConfig();
         cfg.options().copyDefaults(true);
         cfg.addDefault("username", "root");
@@ -442,14 +434,17 @@ public class FileManager {
         cfg.addDefault("host", "localhost");
         cfg.addDefault("port", "3306");
 
-        try {
+        try
+        {
             cfg.save(getMySQL());
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
-
-    public static void readMySQL() {
+    public static void readMySQL()
+    {
         FileConfiguration cfg = getMySQLConfig();
         MySQL.username = cfg.getString("username");
         MySQL.password = cfg.getString("password");

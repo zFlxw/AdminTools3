@@ -4,16 +4,12 @@ import de.flxw.admintools.commands.*;
 import de.flxw.admintools.listener.*;
 import de.flxw.admintools.mysql.MySQL;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
 
 public class AdminTools extends JavaPlugin
 {
     public static AdminTools instance;
-    public int resourceId = 68455;
     public String Prefix;
     public String BanPrefix;
     public String MutePrefix;
@@ -40,7 +36,6 @@ public class AdminTools extends JavaPlugin
     public String GiveawayWinMessage;
     public String FreezeTitle1;
     public String FreezeTitle2;
-    public boolean DenyBuildWhileFreezed;
     public String PingMessage;
     public String AlreadyBanned;
     public String Banned;
@@ -71,7 +66,6 @@ public class AdminTools extends JavaPlugin
     public String OtherNoFreezeMessage;
     public String GamemodeMessage;
     public String OtherGamemodeMessage;
-    public int GiveawayCounter;
     public String GiveawayNotEnough;
     public String GiveawayStarted;
     public String GodmodeMessage;
@@ -88,9 +82,6 @@ public class AdminTools extends JavaPlugin
     public String LockchatDenyMessage;
     public String AlreadyMuted;
     public String StaffMuteMessage;
-    public int PingLightgreen;
-    public int PingDarkgreen;
-    public int PingLightred;
     public String RenameMessage;
     public String RenameValidItemMessage;
     public String RenameColorWarning;
@@ -131,14 +122,10 @@ public class AdminTools extends JavaPlugin
     public String OtherWorkbenchMessage;
     public String Antiban;
     public String Antimute;
-    public boolean Modt;
     public String ModtLine1;
     public String ModtLine2;
     public String UnknownCommand;
     public String PublicTime;
-    public int MaxPlayers;
-    public boolean UnknownCommandBoolean;
-    public boolean LogIP;
     public String MsgReplyError;
     public String AdminchatMessage;
     public String HatMessage;
@@ -146,12 +133,23 @@ public class AdminTools extends JavaPlugin
     public String OtherHatMessage;
     public String OtherNoLongerHatMessage;
     public String HatErrorMessage;
-    public boolean DisableUpdateMessage;
     public String PERM_ALL = "admintools.*";
+    public int resourceId = 68455;
+    public int GiveawayCounter;
+    public int MaxPlayers;
+    public int PingLightgreen;
+    public int PingDarkgreen;
+    public int PingLightred;
+    public boolean DenyBuildWhileFreezed;
+    public boolean Modt;
+    public boolean UnknownCommandBoolean;
+    public boolean LogIP;
+    public boolean DisableUpdateMessage;
     public boolean MySQLcon;
 
     @Override
-    public void onEnable() {
+    public void onEnable()
+    {
         instance = this;
         FileManager.setStandardConfig();
         FileManager.setMySQL();
@@ -170,13 +168,13 @@ public class AdminTools extends JavaPlugin
         registerEvents();
         consoleMessage();
     }
-
     @Override
-    public void onDisable() {
+    public void onDisable()
+    {
         MySQL.closeConnection();
     }
-
-    public void registerEvents() {
+    public void registerEvents()
+    {
         PluginManager pm = this.getServer().getPluginManager();
 
         pm.registerEvents(new JoinListener(this), this);
@@ -190,147 +188,56 @@ public class AdminTools extends JavaPlugin
         pm.registerEvents(new CommandPreprocessListener(this), this);
         pm.registerEvents(new PlayerCloseInventoryListener(this), this);
     }
-
-    public void registerCommands() {
-
-        Command_Gamemode cGM = new Command_Gamemode(this);
-        getCommand("gm").setExecutor(cGM);
-
-        Command_Fly cFly = new Command_Fly(this);
-        getCommand("fly").setExecutor(cFly);
-
-        Command_Godmode cGod = new Command_Godmode(this);
-        getCommand("godmode").setExecutor(cGod);
-
-        Command_Broadcast cBroadcast = new Command_Broadcast(this);
-        getCommand("broadcast").setExecutor(cBroadcast);
-
-        Command_MSG cMSG = new Command_MSG(this);
-        getCommand("msg").setExecutor(cMSG);
-
-        Command_Kick cKick = new Command_Kick(this);
-        getCommand("kick").setExecutor(cKick);
-
-        Command_Ban cBan = new Command_Ban(this);
-        getCommand("ban").setExecutor(cBan);
-
-        Command_Tempban cTempban = new Command_Tempban(this);
-        getCommand("tempban").setExecutor(cTempban);
-
-        Command_Unban cUnban = new Command_Unban(this);
-        getCommand("unban").setExecutor(cUnban);
-
-        Command_Checkban cCheckban = new Command_Checkban(this);
-        getCommand("checkban").setExecutor(cCheckban);
-
-        Command_Heal cHeal = new Command_Heal(this);
-        getCommand("heal").setExecutor(cHeal);
-
-        Command_Feed cFeed = new Command_Feed(this);
-        getCommand("feed").setExecutor(cFeed);
-
-        Command_Invsee cInvsee = new Command_Invsee(this);
-        getCommand("invsee").setExecutor(cInvsee);
-
-        Command_ClearChat cClearChat = new Command_ClearChat(this);
-        getCommand("clearchat").setExecutor(cClearChat);
-
-        Command_Lockchat cLockchat = new Command_Lockchat(this);
-        getCommand("lockchat").setExecutor(cLockchat);
-
-        Command_Mute cMute = new Command_Mute(this);
-        getCommand("mute").setExecutor(cMute);
-
-        Command_Tempmute cTempmute = new Command_Tempmute(this);
-        getCommand("tempmute").setExecutor(cTempmute);
-
-        Command_Unmute cUnmute = new Command_Unmute(this);
-        getCommand("unmute").setExecutor(cUnmute);
-
-        Command_Checkmute cCheckMute = new Command_Checkmute(this);
-        getCommand("checkmute").setExecutor(cCheckMute);
-
-        Command_Admintools cAdmintools = new Command_Admintools(this);
-        getCommand("admintools").setExecutor(cAdmintools);
-
-        Command_Bypass cBypass = new Command_Bypass(this);
-        getCommand("bypass").setExecutor(cBypass);
-
-        Command_Vanish cVanish = new Command_Vanish(this);
-        getCommand("vanish").setExecutor(cVanish);
-
-        Command_Censor cCensor = new Command_Censor(this);
-        getCommand("censor").setExecutor(cCensor);
-
-        Command_Giveaway cGiveaway = new Command_Giveaway(this);
-        getCommand("giveaway").setExecutor(cGiveaway);
-
-        Command_Freeze cFreeze = new Command_Freeze(this);
-        getCommand("freeze").setExecutor(cFreeze);
-
-        Command_Socialspy cSocialspy = new Command_Socialspy(this);
-        getCommand("socialspy").setExecutor(cSocialspy);
-
-        Command_Ping cPing = new Command_Ping(this);
-        getCommand("ping").setExecutor(cPing);
-
-        Command_Workbench cWorkbench = new Command_Workbench(this);
-        getCommand("workbench").setExecutor(cWorkbench);
-
-        Command_Enderchest cEnderchest = new Command_Enderchest(this);
-        getCommand("enderchest").setExecutor(cEnderchest);
-
-        Command_Tphere cTphere = new Command_Tphere(this);
-        getCommand("tphere").setExecutor(cTphere);
-
-        Command_Tpall cTpall = new Command_Tpall(this);
-        getCommand("tpall").setExecutor(cTpall);
-
-        Command_Tpa cTpa = new Command_Tpa(this);
-        getCommand("tpa").setExecutor(cTpa);
-
-        Command_Tpaccept cTpaccept = new Command_Tpaccept(this);
-        getCommand("tpaccept").setExecutor(cTpaccept);
-
-        Command_Tpdeny cTpdeny = new Command_Tpdeny(this);
-        getCommand("tpdeny").setExecutor(cTpdeny);
-
-        Command_Sign cSign = new Command_Sign(this);
-        getCommand("sign").setExecutor(cSign);
-
-        Command_Rename cRename = new Command_Rename(this);
-        getCommand("rename").setExecutor(cRename);
-
-        Command_Speed cSpeed = new Command_Speed(this);
-        getCommand("speed").setExecutor(cSpeed);
-
-        Command_Skull cSkull = new Command_Skull(this);
-        getCommand("skull").setExecutor(cSkull);
-
-        Command_Viewarmor cArmor = new Command_Viewarmor(this);
-        getCommand("viewarmor").setExecutor(cArmor);
-
-        Command_Clearscreen cCLS = new Command_Clearscreen(this);
-        getCommand("cls").setExecutor(cCLS);
-
-        Command_Playerinfo cPlayerinfo = new Command_Playerinfo(this);
-        getCommand("playerinfo").setExecutor(cPlayerinfo);
-
-        Command_Adminchat cAdminchat = new Command_Adminchat(this);
-        getCommand("adminchat").setExecutor(cAdminchat);
-
-        Command_Day cDay = new Command_Day(this);
-        getCommand("day").setExecutor(cDay);
-
-        Command_Night cNight = new Command_Night(this);
-        getCommand("night").setExecutor(cNight);
-
-        Command_Hat cHat = new Command_Hat(this);
-        getCommand("hat").setExecutor(cHat);
-
+    public void registerCommands()
+    {
+        getCommand("gm").setExecutor(new Command_Gamemode(this));
+        getCommand("fly").setExecutor(new Command_Fly(this));
+        getCommand("godmode").setExecutor(new Command_Godmode(this));
+        getCommand("broadcast").setExecutor(new Command_Broadcast(this));
+        getCommand("msg").setExecutor(new Command_MSG(this));
+        getCommand("kick").setExecutor(new Command_Kick(this));
+        getCommand("ban").setExecutor(new Command_Ban(this));
+        getCommand("tempban").setExecutor(new Command_Tempban(this));
+        getCommand("unban").setExecutor(new Command_Unban(this));
+        getCommand("checkban").setExecutor(new Command_Checkban(this));
+        getCommand("heal").setExecutor(new Command_Heal(this));
+        getCommand("feed").setExecutor(new Command_Feed(this));
+        getCommand("invsee").setExecutor(new Command_Invsee(this));
+        getCommand("clearchat").setExecutor(new Command_ClearChat(this));
+        getCommand("lockchat").setExecutor(new Command_Lockchat(this));
+        getCommand("mute").setExecutor(new Command_Mute(this));
+        getCommand("tempmute").setExecutor(new Command_Tempmute(this));
+        getCommand("unmute").setExecutor(new Command_Unmute(this));
+        getCommand("checkmute").setExecutor(new Command_Checkmute(this));
+        getCommand("admintools").setExecutor(new Command_Admintools(this));
+        getCommand("bypass").setExecutor(new Command_Bypass(this));
+        getCommand("vanish").setExecutor(new Command_Vanish(this));
+        getCommand("censor").setExecutor(new Command_Censor(this));
+        getCommand("giveaway").setExecutor( new Command_Giveaway(this));
+        getCommand("freeze").setExecutor(new Command_Freeze(this));
+        getCommand("socialspy").setExecutor(new Command_Socialspy(this));
+        getCommand("ping").setExecutor(new Command_Ping(this));
+        getCommand("workbench").setExecutor(new Command_Workbench(this));
+        getCommand("enderchest").setExecutor(new Command_Enderchest(this));
+        getCommand("tphere").setExecutor(new Command_Tphere(this));
+        getCommand("tpall").setExecutor(new Command_Tpall(this));
+        getCommand("tpa").setExecutor(new Command_Tpa(this));
+        getCommand("tpaccept").setExecutor(new Command_Tpaccept(this));
+        getCommand("tpdeny").setExecutor(new Command_Tpdeny(this));
+        getCommand("sign").setExecutor(new Command_Sign(this));
+        getCommand("rename").setExecutor(new Command_Rename(this));
+        getCommand("speed").setExecutor(new Command_Speed(this));
+        getCommand("skull").setExecutor(new Command_Skull(this));
+        getCommand("viewarmor").setExecutor(new Command_Viewarmor(this));
+        getCommand("cls").setExecutor(new Command_Clearscreen(this));
+        getCommand("playerinfo").setExecutor(new Command_Playerinfo(this));
+        getCommand("adminchat").setExecutor(new Command_Adminchat(this));
+        getCommand("day").setExecutor(new Command_Day(this));
+        getCommand("night").setExecutor(new Command_Night(this));
+        getCommand("hat").setExecutor(new Command_Hat(this));
     }
-
-    public void consoleMessage() {
+    public void consoleMessage()
+    {
         Bukkit.getConsoleSender().sendMessage("§7 ---------------> §cAdminTools §7<----------");
         Bukkit.getConsoleSender().sendMessage(" ");
         Bukkit.getConsoleSender().sendMessage(">> §bVersion: §e" + this.getDescription().getVersion());
@@ -348,9 +255,5 @@ public class AdminTools extends JavaPlugin
         Bukkit.getConsoleSender().sendMessage(" ");
         Bukkit.getConsoleSender().sendMessage("§7 ---------------> §cAdminTools §7<----------");
     }
-
-    public static AdminTools getInstance() {
-        return instance;
-    }
-
+    public static AdminTools getInstance() {return instance; }
 }

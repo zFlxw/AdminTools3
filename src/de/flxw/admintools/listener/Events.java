@@ -8,19 +8,19 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 public class Events implements Listener {
     public Events(AdminTools adminTools) {}
 
-
     @EventHandler
-    public static void onPlayerMove(PlayerMoveEvent evt) {
+    public static void onPlayerMove(PlayerMoveEvent evt)
+    {
         Player player = evt.getPlayer();
-
-        if(ArrayLists.freeze.contains(player)) {
-            if(evt.getFrom().getZ() != evt.getTo().getZ() && evt.getFrom().getX() != evt.getTo().getX()) {
+        if(ArrayLists.freeze.contains(player))
+        {
+            if(evt.getFrom().getZ() != evt.getTo().getZ() && evt.getFrom().getX() != evt.getTo().getX())
+            {
                 Location to = evt.getFrom();
                 to.setYaw(evt.getTo().getYaw());
                 to.setPitch(evt.getTo().getPitch());
@@ -30,24 +30,26 @@ public class Events implements Listener {
             }
         }
     }
-
     @EventHandler
-    public static void onBlockPlace(BlockPlaceEvent evt) {
+    public static void onBlockPlace(BlockPlaceEvent evt)
+    {
         Player player = evt.getPlayer();
-
-        if(AdminTools.getInstance().DenyBuildWhileFreezed) {
-            if(ArrayLists.freeze.contains(player)) {
+        if(AdminTools.getInstance().DenyBuildWhileFreezed)
+        {
+            if(ArrayLists.freeze.contains(player))
+            {
                 evt.setCancelled(true);
             }
         }
     }
-
     @EventHandler
-    public static void onBlockBreak(BlockBreakEvent evt) {
+    public static void onBlockBreak(BlockBreakEvent evt)
+    {
         Player player = evt.getPlayer();
-
-        if(AdminTools.getInstance().DenyBuildWhileFreezed) {
-            if(ArrayLists.freeze.contains(player)) {
+        if(AdminTools.getInstance().DenyBuildWhileFreezed)
+        {
+            if(ArrayLists.freeze.contains(player))
+            {
                 evt.setCancelled(true);
             }
         }

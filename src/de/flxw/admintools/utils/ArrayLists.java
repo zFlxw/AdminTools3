@@ -6,8 +6,9 @@ import org.bukkit.inventory.Inventory;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class  ArrayLists {
-    // Bypass
+public class  ArrayLists
+{
+    /*                          BYPASS                                      */
     public static ArrayList<Player> bypassAll = new ArrayList<>();
     public static ArrayList<Player> bypassGamemode = new ArrayList<>();
     public static ArrayList<Player> bypassFly = new ArrayList<>();
@@ -21,15 +22,14 @@ public class  ArrayLists {
     public static ArrayList<Player> bypassCensor = new ArrayList<>();
     public static ArrayList<Player> bypassFreeze = new ArrayList<>();
     public static ArrayList<Player> bypassSpeed = new ArrayList<>();
-
+    /*                          ArrayLists                                  */
     public static ArrayList<Player> godmode = new ArrayList<>();
     public static ArrayList<Player> vanish = new ArrayList<>();
     public static ArrayList<Player> censor = new ArrayList<>();
     public static ArrayList<Player> freeze = new ArrayList<>();
     public static ArrayList<Player> socialspy = new ArrayList<>();
     public static ArrayList<Player> adminchatNotify = new ArrayList<>();
-
-    //HASMAPS
+    /*                          HashMaps                                    */
     public static HashMap<Player, Player> tpa = new HashMap<>();
     public static HashMap<Player, Inventory> inventoryIn = new HashMap<>();
 

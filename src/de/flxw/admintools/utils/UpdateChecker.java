@@ -1,6 +1,5 @@
 package de.flxw.admintools.utils;
 
-import com.google.common.net.UrlEscapers;
 import org.bukkit.Bukkit;
 
 import java.io.IOException;
@@ -12,12 +11,12 @@ import java.util.function.Consumer;
 public class UpdateChecker {
     private AdminTools plugin;
     private int resourceId;
+
     public UpdateChecker(AdminTools plugin, int resourceId)
     {
         this.plugin = plugin;
         this.resourceId = resourceId;
     }
-
     public void getVersion(final Consumer<String> consumer)
     {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
@@ -34,5 +33,4 @@ public class UpdateChecker {
             }
         });
     }
-
 }
