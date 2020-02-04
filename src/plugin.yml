@@ -1,0 +1,66 @@
+name: AdminTools
+version: 3.6.0
+author: zFlxw
+main: de.flxw.admintools.utils.AdminTools
+commands:
+  gm:
+    aliases: [gamemode]
+  fly:
+  godmode:
+    aliases: [god]
+  broadcast:
+    aliases: [bc]
+  msg:
+  kick:
+  ban:
+  tempban:
+  unban:
+  checkban:
+    aliases: [cb]
+  heal:
+  feed:
+  invsee:
+  clearchat:
+    aliases: [cc]
+  lockchat:
+    aliases: [lc]
+  mute:
+  tempmute:
+  unmute:
+  checkmute:
+    aliases: [cm]
+  admintools:
+    aliases: [at]
+  bypass:
+  vanish:
+    aliases: [v]
+  censor:
+  giveaway:
+  freeze:
+  socialspy:
+  ping:
+  workbench:
+    aliases: [wb]
+  enderchest:
+    aliases: [ec]
+  tphere:
+    aliases: [s]
+  tpall:
+  tpa:
+  tpaccept:
+  tpdeny:
+  sign:
+  rename:
+  speed:
+  skull:
+  viewarmor:
+    aliases: [armor, va]
+  cls:
+    aliases: [clearscreen, clearconsole]
+  playerinfo:
+    aliases: [pi, checkplayer, cp]
+  adminchat:
+    aliases: [supportchat, ac, sc]
+  day:
+  night:
+  hat:
