@@ -1,3 +1,5 @@
+// ATTENTION: This Class isn't ready yet (04-Feb-2020) and WON'T Work!
+
 package de.flxw.admintools.commands;
 
 import de.flxw.admintools.utils.AdminTools;
