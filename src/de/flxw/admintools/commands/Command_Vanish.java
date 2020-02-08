@@ -10,13 +10,11 @@ import org.bukkit.entity.Player;
 
 public class Command_Vanish implements CommandExecutor {
     public Command_Vanish(AdminTools adminTools) {}
-
     private static final String PERM_VANISH = "admintools.vanish";
 
-
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -99,7 +97,6 @@ public class Command_Vanish implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

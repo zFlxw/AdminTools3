@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 
 public class Command_Heal implements CommandExecutor {
     public Command_Heal(AdminTools adminTools) {}
-
     private static final String PERM_HEAL = "admintools.heal";
 
     @Override

@@ -9,12 +9,11 @@ import org.bukkit.command.CommandSender;
 
 public class Command_Unmute implements CommandExecutor {
     public Command_Unmute(AdminTools adminTools) {}
-
     private static final String PERM_UNMUTE = "admintools.unmute";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_UNMUTE) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(AdminTools.getInstance().MySQLcon)
@@ -46,7 +45,6 @@ public class Command_Unmute implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPerm);
         }
-
         return true;
     }
 }

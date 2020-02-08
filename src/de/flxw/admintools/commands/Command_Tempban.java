@@ -12,13 +12,12 @@ import java.util.List;
 
 public class Command_Tempban implements CommandExecutor {
     public Command_Tempban(AdminTools adminTools) {}
-
     private static final String PERM_TEMPBAN = "admintools.tempban";
     private static final String PERM_ANTIBAN = "admintools.ban.priority";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_TEMPBAN) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(AdminTools.getInstance().MySQLcon)
@@ -139,10 +138,8 @@ public class Command_Tempban implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPerm);
         }
-
         return true;
     }
-
     public String getUUID(String playername)
     {
         return Bukkit.getOfflinePlayer(playername).getUniqueId().toString();

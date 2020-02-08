@@ -10,12 +10,11 @@ import org.bukkit.entity.Player;
 
 public class Command_MSG implements CommandExecutor {
     public Command_MSG(AdminTools adminTools) {}
-
     private static final String PERM_MSG = "admintools.msg";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -68,7 +67,6 @@ public class Command_MSG implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

@@ -9,9 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Enderchest implements CommandExecutor {
-    public Command_Enderchest(AdminTools adminTools) {
-    }
-
+    public Command_Enderchest(AdminTools adminTools) {}
     private static final String PERM_ENDERCHEST = "admintools.enderchest";
     private static final String PERM_ENDERCHEST_OTHER = "admintools.enderchest.other";
     private static final String PERM_ENDERCHEST_ALL = "admintools.enderchest.*";
@@ -19,10 +17,9 @@ public class Command_Enderchest implements CommandExecutor {
     private static final String PERM_EC_OTHER = "admintools.ec.other";
     private static final String PERM_EC_ALL = "admintools.ec.*";
 
-
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -61,7 +58,6 @@ public class Command_Enderchest implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

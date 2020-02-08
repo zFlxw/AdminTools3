@@ -15,7 +15,7 @@ public enum BanUnit {
     private int toSecond;
     private String shortcut;
 
-    private BanUnit(String name, int toSecond, String shortcut)
+    BanUnit(String name, int toSecond, String shortcut)
     {
         this.name = name;
         this.toSecond = toSecond;

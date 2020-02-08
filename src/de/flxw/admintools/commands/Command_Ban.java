@@ -9,13 +9,12 @@ import org.bukkit.command.CommandSender;
 
 public class Command_Ban implements CommandExecutor {
     public Command_Ban(AdminTools adminTools) {}
-
     private static final String PERM_BAN = "admintools.ban";
     private static final String PERM_ANTIBAN = "admintools.ban.priority";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_BAN) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(AdminTools.getInstance().MySQLcon)

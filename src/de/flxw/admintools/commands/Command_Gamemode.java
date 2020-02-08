@@ -10,14 +10,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Gamemode implements CommandExecutor {
-    public Command_Gamemode(AdminTools adminTools) {
-    }
-
+    public Command_Gamemode(AdminTools adminTools) {}
     private static final String PERM_GM = "admintools.gm";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;

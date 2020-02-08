@@ -8,14 +8,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Night implements CommandExecutor {
-    public Command_Night(AdminTools adminTools) {
-    }
+    public Command_Night(AdminTools adminTools) {}
 
     private static final String PERM_NIGHT = "admintools.night";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_NIGHT) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(args.length == 0)

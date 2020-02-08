@@ -1,5 +1,4 @@
-// ATTENTION: This Class isn't ready yet (04-Feb-2020) and WON'T Work!
-
+//CURRENTLY IN DEVELOPMENT BUILD. NOT RELEASED / WORKING YET
 package de.flxw.admintools.commands;
 
 import de.flxw.admintools.utils.AdminTools;
@@ -11,16 +10,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class Command_Hat implements CommandExecutor {
-    public static final String PERM_HAT = "admintools.hat";
-    public static final String PERM_HAT_OTHER = "admintools.hat.other";
-    public static final String PERM_HAT_ALL = "admintools.hat.*";
-
-    public Command_Hat(AdminTools adminTools) {
-    }
+    public Command_Hat(AdminTools adminTools) {}
+    private static final String PERM_HAT = "admintools.hat";
+    private static final String PERM_HAT_OTHER = "admintools.hat.other";
+    private static final String PERM_HAT_ALL = "admintools.hat.*";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -73,7 +70,6 @@ public class Command_Hat implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

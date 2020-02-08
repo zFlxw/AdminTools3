@@ -8,13 +8,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Tpdeny implements CommandExecutor {
-    public Command_Tpdeny(AdminTools adminTools) {
-    }
-
+    public Command_Tpdeny(AdminTools adminTools) { }
     private static final String PERM_Tpdeny = "admintools.tpdeny";
+
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-        
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -49,7 +48,6 @@ public class Command_Tpdeny implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

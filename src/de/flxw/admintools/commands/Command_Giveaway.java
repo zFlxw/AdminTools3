@@ -15,14 +15,12 @@ public class Command_Giveaway implements CommandExecutor {
     String price = "";
     int high = AdminTools.getInstance().GiveawayCounter;
     int GIVEAWAY;
-    public Command_Giveaway(AdminTools adminTools) {
-    }
-
+    public Command_Giveaway(AdminTools adminTools) {}
     private static final String PERM_GIVEAWAY = "admintools.giveaway";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_GIVEAWAY) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(args.length >= 1)
@@ -87,7 +85,6 @@ public class Command_Giveaway implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPerm);
         }
-
         return true;
     }
 }

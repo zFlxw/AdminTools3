@@ -8,13 +8,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Tpall implements CommandExecutor {
-    public Command_Tpall(AdminTools adminTools) {
-    }
-
+    public Command_Tpall(AdminTools adminTools) {}
     private static final String PERM_TPALL = "admintools.tpall";
-    @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
 
+    @Override
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -44,7 +43,6 @@ public class Command_Tpall implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-        
         return true;
     }
 }

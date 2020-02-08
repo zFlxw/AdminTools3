@@ -8,17 +8,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Lockchat implements CommandExecutor {
-    public Command_Lockchat(AdminTools adminTools) {
-
-    }
-
+    public Command_Lockchat(AdminTools adminTools) { }
     public static boolean isChatLocked = false;
     private static final String PERM_LOCKCHAT = "admintools.lockchat";
     private static final String PERM_LC = "admintools.lc";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_LOCKCHAT) || commandSender.hasPermission(PERM_LC) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(args.length == 0)

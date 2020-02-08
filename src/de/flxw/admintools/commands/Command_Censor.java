@@ -9,14 +9,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Censor implements CommandExecutor {
-    public Command_Censor(AdminTools adminTools) {
-    }
-
+    public Command_Censor(AdminTools adminTools) { }
     private static final String PERM_CENSOR = "admintools.censor";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;

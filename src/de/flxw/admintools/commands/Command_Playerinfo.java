@@ -13,9 +13,7 @@ import org.bukkit.entity.Player;
 import java.net.InetSocketAddress;
 
 public class Command_Playerinfo implements CommandExecutor {
-    public Command_Playerinfo(AdminTools adminTools) {
-    }
-
+    public Command_Playerinfo(AdminTools adminTools) {}
     private static final String PERM_PLAYERINFO = "admintools.playerinfo";
     private static final String PERM_PLAYERINFO_IP = "admintools.playerinfo.ip";
 
@@ -32,9 +30,13 @@ public class Command_Playerinfo implements CommandExecutor {
                 commandSender.sendMessage(AdminTools.getInstance().Prefix + "§7Playername: §a" + offlineTarget.getName());
                 commandSender.sendMessage(AdminTools.getInstance().Prefix + "§7UUID: §a" + offlineTarget.getUniqueId().toString());
                 commandSender.sendMessage(AdminTools.getInstance().Prefix + "§7Status: " + (offlineTarget.isOnline() ? "§aOnline" : "§cOffline"));
-                try {
+                try
+                {
                     commandSender.sendMessage(AdminTools.getInstance().Prefix + "§7Country (IP based): §a" + MySQL.getCountry(new InetSocketAddress(target.getAddress().getAddress().getHostAddress(), 0)));
-                } catch (Exception e) {
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
                 }
                 if(commandSender.hasPermission(PERM_PLAYERINFO_IP) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
                 {

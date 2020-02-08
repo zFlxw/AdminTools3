@@ -10,12 +10,11 @@ import org.bukkit.entity.Player;
 
 public class Command_Socialspy implements CommandExecutor {
     public Command_Socialspy(AdminTools adminTools) {}
-
     private static final String PERM_SOCIALSPY = "admintools.socialspy";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -65,19 +64,16 @@ public class Command_Socialspy implements CommandExecutor {
                 {
                     player.sendMessage(AdminTools.getInstance().Prefix + "§cUsage: /socialspy (Player)");
                 }
-
             }
             else
             {
                 player.sendMessage(AdminTools.getInstance().NoPerm);
             }
-
         }
         else
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

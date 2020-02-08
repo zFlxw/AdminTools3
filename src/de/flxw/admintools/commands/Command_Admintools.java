@@ -5,19 +5,13 @@ import de.flxw.admintools.utils.AdminTools;
 import de.flxw.admintools.utils.UpdateChecker;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.Arrays;
 
 public class Command_Admintools implements CommandExecutor {
+    public Command_Admintools(AdminTools adminTools) {}
     public String PLUGIN_VERSION = AdminTools.getInstance().getDescription().getVersion();
     public final String DISCORD = "Flxw#7928";
     private static final String PERM_TOOLS = "admintools.tools";
@@ -25,12 +19,10 @@ public class Command_Admintools implements CommandExecutor {
     private static final String PERM_TOOLS_ALL = "admintools.tools.*";
     private static final String PERM_TOOLS_VERSION = "admintools.tools.version";
     private static final String PERM_TOOLS_ATGUI = "admintools.tools.atgui";
-    public Command_Admintools(AdminTools adminTools) {
-    }
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_TOOLS) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(args.length == 1)
@@ -125,7 +117,6 @@ public class Command_Admintools implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPerm);
         }
-
         return true;
     }
 }

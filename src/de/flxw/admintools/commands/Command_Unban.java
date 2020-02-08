@@ -9,12 +9,11 @@ import org.bukkit.command.CommandSender;
 
 public class Command_Unban implements CommandExecutor {
     public Command_Unban(AdminTools adminTools) {}
-
     private static final String PERM_UNBAN = "admintools.unban";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_UNBAN) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(AdminTools.getInstance().MySQLcon)

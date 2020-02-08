@@ -13,15 +13,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 
 public class Command_Sign implements CommandExecutor {
-    public Command_Sign(AdminTools adminTools) {
-    }
-
+    public Command_Sign(AdminTools adminTools) {}
     private static final String PERM_SIGN = "admintools.sign";
     private static final String PERM_SIGN_COLOR = "admintools.sign.color";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -76,7 +74,6 @@ public class Command_Sign implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

@@ -24,12 +24,11 @@ import java.util.List;
 
 public class Command_Checkmute implements CommandExecutor {
     public Command_Checkmute(AdminTools adminTools) {}
-
     private static final String PERM_CHECKMUTE = "admintools.checkmute";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_CHECKMUTE) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(AdminTools.getInstance().MySQLcon)
@@ -109,7 +108,6 @@ public class Command_Checkmute implements CommandExecutor {
 
         return true;
     }
-
     public static void openMuteList(Player player)
     {
         Inventory inventory = Bukkit.createInventory(null, 6*9, "§c§lAT Center §7§l| §9Mutelist");
@@ -137,7 +135,6 @@ public class Command_Checkmute implements CommandExecutor {
         }
         player.openInventory(inventory);
     }
-
     public static void openMuteInfo(Player player, String playername)
     {
         if(MuteManager.isMuted(Bukkit.getOfflinePlayer(playername).getUniqueId().toString()))
@@ -220,7 +217,6 @@ public class Command_Checkmute implements CommandExecutor {
             player.sendMessage(AdminTools.getInstance().MutePrefix + "Muted: §c" + (MuteManager.isMuted(getUUID(playername)) ? "Yes" : "No"));
         }
     }
-
     public static String getUUID(String playername)
     {
         return Bukkit.getOfflinePlayer(playername).getUniqueId().toString();

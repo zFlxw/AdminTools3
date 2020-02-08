@@ -12,12 +12,11 @@ import java.util.List;
 
 public class Command_Tempmute implements CommandExecutor {
     public Command_Tempmute(AdminTools adminTools) {}
-
     private static final String PERM_TEMPMUTE = "admintools.tempmute";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_TEMPMUTE) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(AdminTools.getInstance().MySQLcon)

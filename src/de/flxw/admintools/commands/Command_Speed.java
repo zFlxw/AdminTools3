@@ -9,15 +9,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Speed implements CommandExecutor {
-    public Command_Speed(AdminTools adminTools) {
-    }
-
+    public Command_Speed(AdminTools adminTools) {}
     private static final String PERM_SPEED = "admintools.speed";
     private static final String PERM_SPEED_OTHER = "admintools.speed.other";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -163,13 +161,11 @@ public class Command_Speed implements CommandExecutor {
             {
                 player.sendMessage(AdminTools.getInstance().Prefix + "§cUsage: /speed <amount> (player)");
             }
-
         }
         else
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

@@ -9,13 +9,12 @@ import org.bukkit.command.CommandSender;
 
 public class Command_Mute implements CommandExecutor {
     public Command_Mute(AdminTools adminTools) {}
-
     private static final String PERM_MUTE = "admintools.mute";
     private static final String PERM_ANTIMUTE = "admintools.mute.priority";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_MUTE) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(AdminTools.getInstance().MySQLcon)
@@ -83,7 +82,6 @@ public class Command_Mute implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPerm);
         }
-
         return true;
     }
     public String getUUID(String playername) {

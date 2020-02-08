@@ -10,12 +10,11 @@ import org.bukkit.entity.Player;
 
 public class Command_Invsee implements CommandExecutor {
     public Command_Invsee(AdminTools adminTools) {}
-
     private static final String PERM_INVSEE = "admintools.invsee";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -59,13 +58,11 @@ public class Command_Invsee implements CommandExecutor {
             {
                 player.sendMessage(AdminTools.getInstance().NoPerm);
             }
-
         }
         else
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

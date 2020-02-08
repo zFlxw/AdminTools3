@@ -9,12 +9,11 @@ import org.bukkit.entity.Player;
 
 public class Command_Tpaccept implements CommandExecutor {
     private static final String PERM_TPACCEPT = "admintools.tpaccept";
-    public Command_Tpaccept(AdminTools adminTools) {
-    }
+    public Command_Tpaccept(AdminTools adminTools) {}
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;

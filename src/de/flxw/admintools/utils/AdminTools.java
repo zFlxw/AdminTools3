@@ -171,7 +171,7 @@ public class AdminTools extends JavaPlugin
     @Override
     public void onDisable()
     {
-        MySQL.closeConnection();
+        MySQL.disconnect();
     }
     public void registerEvents()
     {

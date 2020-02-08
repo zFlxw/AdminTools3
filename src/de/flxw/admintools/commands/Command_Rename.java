@@ -13,14 +13,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 
 public class Command_Rename implements CommandExecutor {
-    public Command_Rename(AdminTools adminTools) {
-    }
-
+    public Command_Rename(AdminTools adminTools) {}
     private static final String PERM_RENAME = "admintools.rename";
     private static final String PERM_RENAME_COLOR = "admintools.rename.color";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;

@@ -11,9 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class Command_Bypass implements CommandExecutor {
-    public Command_Bypass(AdminTools adminTools) {
-    }
-
+    public Command_Bypass(AdminTools adminTools) { }
     private static final String PERM_BYPASS_ALL = "admintools.bypass.*";
     private static final String PERM_BYPASS_ALL2 = "admintools.bypass.all";
     private static final String PERM_BYPASS_GM = "admintools.bypass.gm";
@@ -31,8 +29,8 @@ public class Command_Bypass implements CommandExecutor {
     private static final String PERM_BYPASS_LIST = "admintools.bypass.list";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player)commandSender;

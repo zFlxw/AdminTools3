@@ -9,14 +9,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Feed implements CommandExecutor {
-    public Command_Feed(AdminTools adminTools) {
-    }
-
+    public Command_Feed(AdminTools adminTools) {}
     private static final String PERM_FEED = "admintools.feed";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -79,8 +77,6 @@ public class Command_Feed implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
-
         return true;
     }
 }

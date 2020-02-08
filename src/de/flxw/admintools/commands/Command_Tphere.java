@@ -8,14 +8,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Tphere implements CommandExecutor {
-    public Command_Tphere(AdminTools adminTools) {
-    }
-
+    public Command_Tphere(AdminTools adminTools) {}
     private static final String PERM_TPHERE = "admintools.tphere";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -51,7 +49,6 @@ public class Command_Tphere implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

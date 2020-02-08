@@ -1,21 +1,18 @@
 package de.flxw.admintools.commands;
 
 import de.flxw.admintools.utils.AdminTools;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 
 public class Command_Clearscreen implements CommandExecutor {
-    public Command_Clearscreen(AdminTools adminTools) {
-    }
-
+    public Command_Clearscreen(AdminTools adminTools) {}
     private static final String PERM_CLS = "admintools.cls";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_CLS) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(commandSender instanceof ConsoleCommandSender)

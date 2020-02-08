@@ -1,6 +1,5 @@
 package de.flxw.admintools.commands;
 
-import de.flxw.admintools.listener.InventoryListener;
 import de.flxw.admintools.utils.AdminTools;
 import de.flxw.admintools.ban.BanManager;
 import de.flxw.admintools.utils.ArrayLists;
@@ -16,7 +15,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 

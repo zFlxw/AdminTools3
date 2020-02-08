@@ -11,14 +11,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 public class Command_Skull implements CommandExecutor {
-    public Command_Skull(AdminTools adminTools) {
-    }
-
+    public Command_Skull(AdminTools adminTools) {}
     private static final String PERM_SKULL = "admintools.skull";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -71,7 +69,6 @@ public class Command_Skull implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

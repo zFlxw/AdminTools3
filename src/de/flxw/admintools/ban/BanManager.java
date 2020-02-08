@@ -36,40 +36,41 @@ public class BanManager {
             Bukkit.getPlayer(playername).kickPlayer(banHeader + "\n\n\n" + banReason + "\n\n" + bannedBy + "\n\n\n" + remaining + "\n\n" + appeal);
         }
     }
-
     public static void unban(String uuid)
     {
         MySQL.update("DELETE FROM BannedPlayers WHERE UUID='"+uuid+"'");
     }
-
     public static boolean isBanned(String uuid)
     {
         ResultSet rs = MySQL.getResult("SELECT * FROM BannedPlayers WHERE UUID='"+uuid+"'");
 
-        try {
+        try
+        {
             return rs.next();
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             e.printStackTrace();
         }
         return false;
     }
-
     public static String getReason(String uuid)
     {
         ResultSet rs = MySQL.getResult("SELECT * FROM BannedPlayers WHERE UUID='" + uuid + "'");
 
-        try {
+        try
+        {
             while (rs.next())
             {
                 return rs.getString("REASON");
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             e.printStackTrace();
         }
-
         return "";
     }
-
     public static Long getEnd(String uuid)
     {
         ResultSet rs = MySQL.getResult("SELECT * FROM BannedPlayers WHERE UUID='" + uuid + "'");
@@ -86,7 +87,6 @@ public class BanManager {
         }
         return null;
     }
-
     public static List<String> getBannedPlayers()
     {
         List<String> list = new ArrayList<>();
@@ -105,7 +105,6 @@ public class BanManager {
         }
         return list;
     }
-
     public static String getStaff(String uuid)
     {
         ResultSet rs = MySQL.getResult("SELECT * FROM BannedPlayers WHERE UUID='"+uuid+"'");
@@ -122,24 +121,26 @@ public class BanManager {
         }
         return "";
     }
-
-    public static String getUnbandate(String uuid) {
+    public static String getUnbandate(String uuid)
+    {
         long current = System.currentTimeMillis();
         long end = getEnd(uuid);
+
         if(end == -1)
         {
             return "§4§lPERMANENT";
         }
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd. MMMM yyyy HH:mm");
         Calendar now = Calendar.getInstance();
         sdf.setTimeZone(now.getTimeZone());
         return sdf.format(end);
     }
-
     public static String getRemainingTime(String uuid)
     {
         long current = System.currentTimeMillis();
         long end = getEnd(uuid);
+
         if(end == -1)
         {
             return "§4§lPERMANENT";
@@ -151,6 +152,7 @@ public class BanManager {
         long hours = 0;
         long days = 0;
         long weeks = 0;
+
         while (millis > 1000)
         {
             millis-= 1000;
@@ -178,5 +180,4 @@ public class BanManager {
         }
         return "§4" + weeks + " §cWeek(s) §4" + days + " §cDay(s) §4" + hours + " §cHour(s) §4" + minutes + " §cMinute(s) §4" + seconds + " §cSecond(s)";
     }
-
 }

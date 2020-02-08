@@ -7,15 +7,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Command_Day implements CommandExecutor {
-    public Command_Day(AdminTools adminTools) {
-    }
-
+public class Command_Day implements CommandExecutor
+{
+    public Command_Day(AdminTools adminTools) {}
     private static final String PERM_DAY = "admintools.day";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_DAY) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(args.length == 0)

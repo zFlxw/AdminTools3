@@ -9,15 +9,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Godmode implements CommandExecutor {
-    public Command_Godmode(AdminTools adminTools) {
-    }
-
+    public Command_Godmode(AdminTools adminTools) {}
     private static final String PERM_GODMODE = "admintools.godmode";
     private static final String PERM_GOD = "admintools.god";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -82,7 +80,6 @@ public class Command_Godmode implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

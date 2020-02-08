@@ -8,16 +8,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Workbench implements CommandExecutor {
-    public Command_Workbench(AdminTools adminTools) {
-    }
-
+    public Command_Workbench(AdminTools adminTools) {}
     private static final String PERM_Workbench = "admintools.workbench";
     private static final String PERM_WB = "admintools.wb";
 
-
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;
@@ -56,7 +53,6 @@ public class Command_Workbench implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }

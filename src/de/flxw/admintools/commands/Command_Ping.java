@@ -8,14 +8,12 @@ import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 public class Command_Ping implements CommandExecutor {
-    public Command_Ping(AdminTools adminTools) {
-    }
-
+    public Command_Ping(AdminTools adminTools) {}
     private static final String PERM_PING = "admintools.ping";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender instanceof Player)
         {
             Player player = (Player) commandSender;

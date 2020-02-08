@@ -9,12 +9,12 @@ import org.bukkit.entity.Player;
 
 public class Command_ClearChat implements CommandExecutor {
     public Command_ClearChat(AdminTools adminTools){}
-
     private static final String PERM_CLEARCHAT = "admintools.clearchat";
     private static final String PERM_CC = "admintools.cc";
-    @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
 
+    @Override
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         if(commandSender.hasPermission(PERM_CLEARCHAT) || commandSender.hasPermission(PERM_CC) || commandSender.hasPermission(AdminTools.getInstance().PERM_ALL))
         {
             if(args.length == 0)
@@ -37,7 +37,6 @@ public class Command_ClearChat implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPerm);
         }
-
         return true;
     }
 }

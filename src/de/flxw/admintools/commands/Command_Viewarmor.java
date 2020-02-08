@@ -13,16 +13,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class Command_Viewarmor implements CommandExecutor {
-    public Command_Viewarmor(AdminTools adminTools) {
-    }
-
+    public Command_Viewarmor(AdminTools adminTools) { }
     public Command_Viewarmor instance;
     private static final String PERM_VIEWARMOR = "admintools.viewarmor";
     private static final String PERM_ARMOR = "admintools.armor";
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args)
+    {
         instance = this;
         if(commandSender instanceof Player)
         {
@@ -125,7 +123,6 @@ public class Command_Viewarmor implements CommandExecutor {
 
         player.openInventory(inventory);
     }
-
     public Command_Viewarmor getInstance() {
         return instance;
     }

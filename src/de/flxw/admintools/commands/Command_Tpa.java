@@ -9,9 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Command_Tpa implements CommandExecutor {
-    public Command_Tpa(AdminTools adminTools) {
-    }
-
+    public Command_Tpa(AdminTools adminTools) {}
     private static final String PERM_Tpa = "admintools.tpa";
 
     @Override
@@ -52,7 +50,6 @@ public class Command_Tpa implements CommandExecutor {
         {
             commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
         }
-
         return true;
     }
 }
