@@ -6,7 +6,7 @@ import org.bukkit.inventory.Inventory;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class  ArrayLists
+public class ArrayLists
 {
     /*                          BYPASS                                      */
     public static ArrayList<Player> bypassAll = new ArrayList<>();
@@ -29,6 +29,7 @@ public class  ArrayLists
     public static ArrayList<Player> freeze = new ArrayList<>();
     public static ArrayList<Player> socialspy = new ArrayList<>();
     public static ArrayList<Player> adminchatNotify = new ArrayList<>();
+    public static ArrayList<Player> togglemsg = new ArrayList<>();
     /*                          HashMaps                                    */
     public static HashMap<Player, Player> tpa = new HashMap<>();
     public static HashMap<Player, Inventory> inventoryIn = new HashMap<>();

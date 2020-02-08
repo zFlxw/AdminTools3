@@ -149,6 +149,9 @@ public class FileManager {
         String publictime = cfg.getString("ChatMessages.timeMessage");
         String msgerror = cfg.getString("ChatMessages.msgReplyToYourselfMessage");
         String adminchat = cfg.getString("ChatMessages.adminchatRespondMessage");
+        String toggleMsgMessage = ChatColor.translateAlternateColorCodes('&', cfg.getString("ChatMessages.toggleMsgMessage"));
+        String otherToggleMsgMessage = ChatColor.translateAlternateColorCodes('&', cfg.getString("ChatMessages.otherToggleMsgMessage"));
+        String noMsgMessage = ChatColor.translateAlternateColorCodes('&', cfg.getString("ChatMessages.noMsgMessage"));
         prefix = ChatColor.translateAlternateColorCodes('&', prefix);
         banprefix = ChatColor.translateAlternateColorCodes('&', banprefix);
         muteprefix = ChatColor.translateAlternateColorCodes('&', muteprefix);
@@ -421,6 +424,9 @@ public class FileManager {
         AdminTools.getInstance().NoLongerHatMessage = noLongerHatCommandMessage;
         AdminTools.getInstance().OtherNoLongerHatMessage = otherNoLongerHatCommandMessage;
         AdminTools.getInstance().HatErrorMessage = errorHatMessage;
+        AdminTools.getInstance().toggleMsgMessage = toggleMsgMessage;
+        AdminTools.getInstance().otherToggleMsgMessage = otherToggleMsgMessage;
+        AdminTools.getInstance().noMsgMessage = noMsgMessage;
         AdminTools.getInstance().Banned = banned;
         AdminTools.getInstance().MySQLcon = mysql;
     }

@@ -135,11 +135,9 @@ ChatMessages:
   adminchatLogOffMessage: '&aYou''re &cno longer &alogged in into the adminchat. You will &cno longer &areceive adminchat messages'
   adminchatAlreadyLogInMessage: '&cYou''re already logged in.'
   adminchatAlreadyLogOffMessage: '&cYou''re already logged off.'
-  hatCommandMessage: '&aYou have &2now &athe item &c%item% &aon your head'
-  noLongerHatCommandMessage: '&aYou have &cno longer &athe item &c%item% &aon your head'
-  otherHatCommandMessage: '&aThe player &e%player% &ahas &2now &athe item &c%item% &aon his head'
-  otherNoLongerHatCommandMessage: '&aThe player &e%player% &ahas &cno longer &athe item &c%item% &aon his head'
-  errorHatMessage: '&cPlease hold a valid item in you hand'
+  toggleMsgMessage: '&aYou can now receive private messages'
+  otherToggleMsgMessage: '&aYou can &cno longer &areceive private messages'
+  noMsgMessage: '&cYou cannot send a private message to this player, because this player doens''t allow private messages'
 
 KickConfig:
   allKickedMessage: '&aall players who don''t have the permission to kick were kicked.'

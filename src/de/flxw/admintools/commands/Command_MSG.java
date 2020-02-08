@@ -24,28 +24,35 @@ public class Command_MSG implements CommandExecutor {
                 if(args.length >= 2)
                 {
                     Player target = Bukkit.getPlayer(args[0]);
-                    String message = "";
+                    String message;
 
                     if(target != null)
                     {
-                        if(!target.getName().equalsIgnoreCase(player.getName()))
+                        if(ArrayLists.togglemsg.contains(target))
                         {
-                            StringBuilder sb = new StringBuilder();
-                            for(int i = 1; i < args.length; i++)
+                            if(!target.getName().equalsIgnoreCase(player.getName()))
                             {
-                                sb.append(args[i]).append(" ");
+                                StringBuilder sb = new StringBuilder();
+                                for(int i = 1; i < args.length; i++)
+                                {
+                                    sb.append(args[i]).append(" ");
+                                }
+                                message = sb.toString().trim();
+                                target.sendMessage(AdminTools.getInstance().MsgPrefix + "§c" + player.getName() + " §7➡ §C"+ target.getName()+"§8 »§7 "+ message);
+                                player.sendMessage(AdminTools.getInstance().MsgPrefix + "§c" + player.getName() + " §7➡ §C"+ target.getName()+"§8 »§7 "+message);
+                                for(Player all : ArrayLists.socialspy)
+                                {
+                                    all.sendMessage(AdminTools.getInstance().SocialspyPrefix + "§c" + player.getName() + " §7➡ §C"+ target.getName()+"§8 »§7 "+message);
+                                }
                             }
-                            message = sb.toString().trim();
-                            target.sendMessage(AdminTools.getInstance().MsgPrefix + "§c" + player.getName() + " §7➡ §C"+ target.getName()+"§8 »§7 "+ message);
-                            player.sendMessage(AdminTools.getInstance().MsgPrefix + "§c" + player.getName() + " §7➡ §C"+ target.getName()+"§8 »§7 "+message);
-                            for(Player all : ArrayLists.socialspy)
+                            else
                             {
-                                all.sendMessage(AdminTools.getInstance().SocialspyPrefix + "§c" + player.getName() + " §7➡ §C"+ target.getName()+"§8 »§7 "+message);
+                                player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().MsgReplyError);
                             }
                         }
                         else
                         {
-                            player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().MsgReplyError);
+                            player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().NoMsgMessage);
                         }
                     }
                     else

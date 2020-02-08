@@ -27,6 +27,7 @@ public class JoinListener implements Listener {
         Player player = evt.getPlayer();
         String PlayerJoinMessage = AdminTools.getInstance().JoinMessage.replaceAll("%player%", player.getName());
         String PlayerTeamJoinMessage = AdminTools.getInstance().JoinMessageTeam.replaceAll("%player%", player.getName());
+        ArrayLists.togglemsg.add(player);
 
         if(AdminTools.getInstance().MySQLcon)
         {
@@ -75,8 +76,8 @@ public class JoinListener implements Listener {
                         TextComponent tc = new TextComponent();
                         tc.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.spigotmc.org/resources/admintools-mysql.68455/"));
                         tc.setText(AdminTools.getInstance().Prefix + "§6newer version available. Click here to download");
-                        tc.setText(AdminTools.getInstance().Prefix + "§6gladly you can also rate the plugin :)");
                         player.spigot().sendMessage(tc);
+                        player.sendMessage(AdminTools.getInstance().Prefix + "§6gladly you can also rate my plugin on spigotmc");
                     }
                 });
 

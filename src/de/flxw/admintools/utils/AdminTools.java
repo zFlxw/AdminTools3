@@ -146,6 +146,9 @@ public class AdminTools extends JavaPlugin
     public boolean LogIP;
     public boolean DisableUpdateMessage;
     public boolean MySQLcon;
+    public String ToggleMsgMessage;
+    public String OtherToggleMsgMessage;
+    public String NoMsgMessage;
 
     @Override
     public void onEnable()
@@ -234,7 +237,7 @@ public class AdminTools extends JavaPlugin
         getCommand("adminchat").setExecutor(new Command_Adminchat(this));
         getCommand("day").setExecutor(new Command_Day(this));
         getCommand("night").setExecutor(new Command_Night(this));
-        getCommand("hat").setExecutor(new Command_Hat(this));
+        getCommand("togglemsg").setExecutor(new Command_ToggleMSG(this));
     }
     public void consoleMessage()
     {
