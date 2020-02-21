@@ -14,6 +14,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
@@ -109,7 +111,8 @@ public class InventoryListener implements Listener {
                                 }
                             }, 300);
                         }
-                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§cServer Control")) {
+                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§cServer Control"))
+                        {
                             player.closeInventory();
                             timer.schedule(new TimerTask() {
                                 @Override
@@ -117,6 +120,25 @@ public class InventoryListener implements Listener {
                                     ATCenterInv.AdminServerControlInv(player);
                                 }
                             }, 300);
+                        }
+                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§7Item"))
+                        {
+                            player.closeInventory();
+                            ItemStack atItem = new ItemStack(Material.COMPASS);
+                            ItemMeta atItemMeta = atItem.getItemMeta();
+                            atItemMeta.setDisplayName(AdminTools.getInstance().AdmintoolsItemName);
+                            atItemMeta.setLore(Arrays.asList("§0v"+ AdminTools.getInstance().getDescription().getVersion()));
+                            atItem.setItemMeta(atItemMeta);
+
+                            if(!player.getInventory().contains(atItem))
+                            {
+                                player.getInventory().addItem(atItem);
+                                player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().AdmintoolsItemAdded);
+                            }
+                            else
+                            {
+                                player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().AdmintoolsItemAlreadyInInventory);
+                            }
                         }
                     }
                     else

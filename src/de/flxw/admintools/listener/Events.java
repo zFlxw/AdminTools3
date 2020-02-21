@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 public class Events implements Listener {
@@ -49,6 +50,18 @@ public class Events implements Listener {
         if(AdminTools.getInstance().DenyBuildWhileFreezed)
         {
             if(ArrayLists.freeze.contains(player))
+            {
+                evt.setCancelled(true);
+            }
+        }
+    }
+    @EventHandler
+    public static void onPlayerDrop(PlayerDropItemEvent evt)
+    {
+        Player player = evt.getPlayer();
+        if(evt.getItemDrop().getItemStack() != null && evt.getItemDrop().getItemStack().getItemMeta() != null && evt.getItemDrop().getItemStack().getItemMeta().getDisplayName() != null)
+        {
+            if(evt.getItemDrop().getItemStack().getItemMeta().getDisplayName().equals(AdminTools.getInstance().AdmintoolsItemName) && evt.getItemDrop().getItemStack().getItemMeta().getLore().contains("§0v"+AdminTools.getInstance().getDescription().getVersion()))
             {
                 evt.setCancelled(true);
             }

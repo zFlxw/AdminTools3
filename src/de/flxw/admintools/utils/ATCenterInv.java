@@ -32,6 +32,11 @@ public class ATCenterInv
         mCommands.setDisplayName("§f§lCommands");
         sCommands.setItemMeta(mCommands);
 
+        ItemStack sItem = new ItemStack(Material.COMPASS);
+        ItemMeta mItem = sItem.getItemMeta();
+        mItem.setDisplayName("§7Item");
+        sItem.setItemMeta(mItem);
+
         ItemStack sPlayerC = new ItemStack(Material.SKULL_ITEM);
         ItemMeta mPlayerC = sPlayerC.getItemMeta();
         mPlayerC.setDisplayName("§aPlayer Control");
@@ -78,7 +83,7 @@ public class ATCenterInv
         sClose.setItemMeta(mClose);
 
         inventory.setItem(0, sCommands);
-        inventory.setItem(1, placeholder);
+        inventory.setItem(1, sItem);
         inventory.setItem(2, placeholder);
         inventory.setItem(3, sPlayerC);
         inventory.setItem(4, sPlayername);

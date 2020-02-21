@@ -7,6 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Date;
+
 public class AdminTools extends JavaPlugin
 {
     public static AdminTools instance;
@@ -141,6 +143,16 @@ public class AdminTools extends JavaPlugin
     public String ToggleMsgMessage;
     public String OtherToggleMsgMessage;
     public String NoMsgMessage;
+    public String MaintenanceMotdLine2;
+    public String MaintenanceMotdLine1;
+    public String MaintenanceKickHeader;
+    public String MaintenanceKickLine1;
+    public String MaintenanceKickLine2;
+    public String MaintenanceKickLine3;
+    public String MaintenanceKickFooter;
+    public String AdmintoolsItemName;
+    public String AdmintoolsItemAdded;
+    public String AdmintoolsItemAlreadyInInventory;
     public String PERM_ALL = "admintools.*";
     public int resourceId = 68455;
     public int GiveawayCounter;
@@ -156,13 +168,7 @@ public class AdminTools extends JavaPlugin
     public boolean MySQLcon;
     public boolean MaintenanceMode;
     public boolean ActivateMaintenance;
-    public String MaintenanceMotdLine2;
-    public String MaintenanceMotdLine1;
-    public String MaintenanceKickHeader;
-    public String MaintenanceKickLine1;
-    public String MaintenanceKickLine2;
-    public String MaintenanceKickLine3;
-    public String MaintenanceKickFooter;
+    public boolean GetAdmintoolsItemOnSpawn;
 
     @Override
     public void onEnable()
@@ -186,6 +192,7 @@ public class AdminTools extends JavaPlugin
         }
         registerCommands();
         registerEvents();
+
     }
     @Override
     public void onDisable()
@@ -206,6 +213,7 @@ public class AdminTools extends JavaPlugin
         pm.registerEvents(new ServerListPingEvent(this), this);
         pm.registerEvents(new CommandPreprocessListener(this), this);
         pm.registerEvents(new PlayerCloseInventoryListener(this), this);
+        pm.registerEvents(new PlayerInteractListener(this), this);
     }
     public void registerCommands()
     {

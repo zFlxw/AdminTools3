@@ -9,17 +9,23 @@ import de.flxw.admintools.utils.UpdateChecker;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Arrays;
 
 
 public class JoinListener implements Listener {
     public JoinListener(AdminTools adminTools) {}
     private static String PERM_TEAMJOIN = "admintools.teamjoin";
     private static String PERM_UPDATEINFO = "admintools.updateinfo";
+    private static String PERM_ATGUI = "admintools.atgui";
 
     @EventHandler
     public static void onJoin(PlayerJoinEvent evt)
@@ -29,6 +35,21 @@ public class JoinListener implements Listener {
         String PlayerTeamJoinMessage = AdminTools.getInstance().JoinMessageTeam.replaceAll("%player%", player.getName());
         ArrayLists.togglemsg.add(player);
 
+        if(AdminTools.getInstance().GetAdmintoolsItemOnSpawn)
+        {
+            if(player.hasPermission(PERM_ATGUI) || player.hasPermission(AdminTools.getInstance().PERM_ALL))
+            {
+                ItemStack atItem = new ItemStack(Material.COMPASS);
+                ItemMeta atItemMeta = atItem.getItemMeta();
+                atItemMeta.setDisplayName(AdminTools.getInstance().AdmintoolsItemName);
+                atItemMeta.setLore(Arrays.asList("§0v"+ AdminTools.getInstance().getDescription().getVersion()));
+                atItem.setItemMeta(atItemMeta);
+                if(!player.getInventory().contains(atItem))
+                {
+                    player.getInventory().addItem(atItem);
+                }
+            }
+        }
         if(AdminTools.getInstance().MySQLcon)
         {
             if(PlayerInfoManager.isPlayerInTable(player.getUniqueId().toString()))

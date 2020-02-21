@@ -2,7 +2,6 @@ package de.flxw.admintools.listener;
 
 import de.flxw.admintools.utils.AdminTools;
 import de.flxw.admintools.utils.FileManager;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.EventHandler;

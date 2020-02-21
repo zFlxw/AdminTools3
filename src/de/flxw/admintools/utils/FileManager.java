@@ -170,6 +170,9 @@ public class FileManager {
             String maintenanceKickLine2 = ChatColor.translateAlternateColorCodes('&', cfg.getString("MaintenanceConfig.maintenanceKickLine2"));
             String maintenanceKickLine3 = ChatColor.translateAlternateColorCodes('&', cfg.getString("MaintenanceConfig.maintenanceKickLine3"));
             String maintenanceKickFooter = ChatColor.translateAlternateColorCodes('&', cfg.getString("MaintenanceConfig.maintenanceKickFooter"));
+            String admintoolsitemname = ChatColor.translateAlternateColorCodes('&', cfg.getString("Settings.admintoolsItemName"));
+            String admintoolsitemadd = ChatColor.translateAlternateColorCodes('&', cfg.getString("ChatMessages.adminitemAdded"));
+            String admintoolsitemalreadyin = ChatColor.translateAlternateColorCodes('&', cfg.getString("ChatMessages.adminitemAlreadyInInventory"));
             boolean modt = cfg.getBoolean("Settings.modt");
             boolean unknown = cfg.getBoolean("Settings.unknownCommand");
             boolean mysql = cfg.getBoolean("mysql");
@@ -177,6 +180,7 @@ public class FileManager {
             boolean logip = cfg.getBoolean("Settings.logIpAddress");
             boolean updatemessage = cfg.getBoolean("Settings.disableUpdateMessageOnJoin");
             boolean maintenance = cfg.getBoolean("activateMaintenance");
+            boolean getitemonjoin = cfg.getBoolean("Settings.getAdmintoolsItemOnJoin");
             int giveawaycount = cfg.getInt("GiveawayConfig.giveawaySeconds");
             int pingLightgreen = cfg.getInt("Settings.pingLightgreen");
             int pingDarkgreen = cfg.getInt("Settings.pingDarkgreen");
@@ -332,6 +336,10 @@ public class FileManager {
             AdminTools.getInstance().MaintenanceKickLine2 = maintenanceKickLine2;
             AdminTools.getInstance().MaintenanceKickLine3 = maintenanceKickLine3;
             AdminTools.getInstance().MaintenanceKickFooter = maintenanceKickFooter;
+            AdminTools.getInstance().AdmintoolsItemName = admintoolsitemname;
+            AdminTools.getInstance().AdmintoolsItemAdded = admintoolsitemadd;
+            AdminTools.getInstance().AdmintoolsItemAlreadyInInventory = admintoolsitemalreadyin;
+            AdminTools.getInstance().GetAdmintoolsItemOnSpawn = getitemonjoin;
         }
         catch (NullPointerException ex)
         {

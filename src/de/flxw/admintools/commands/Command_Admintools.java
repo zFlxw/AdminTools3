@@ -6,12 +6,18 @@ import de.flxw.admintools.utils.FileManager;
 import de.flxw.admintools.utils.UpdateChecker;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Arrays;
 
 public class Command_Admintools implements CommandExecutor {
     public Command_Admintools(AdminTools adminTools) {}
@@ -84,6 +90,38 @@ public class Command_Admintools implements CommandExecutor {
                     else
                     {
                         commandSender.sendMessage(AdminTools.getInstance().NoPerm);
+                    }
+                }
+                else if(args[0].equalsIgnoreCase("item"))
+                {
+                    if(commandSender instanceof Player)
+                    {
+                        Player player = (Player) commandSender;
+                        if(player.hasPermission(PERM_TOOLS_ATGUI) || player.hasPermission(PERM_TOOLS_ALL) || player.hasPermission(AdminTools.getInstance().PERM_ALL))
+                        {
+                            ItemStack atItem = new ItemStack(Material.COMPASS);
+                            ItemMeta atItemMeta = atItem.getItemMeta();
+                            atItemMeta.setDisplayName(AdminTools.getInstance().AdmintoolsItemName);
+                            atItemMeta.setLore(Arrays.asList("§0v"+ AdminTools.getInstance().getDescription().getVersion()));
+                            atItem.setItemMeta(atItemMeta);
+                            if(!player.getInventory().contains(atItem))
+                            {
+                                player.getInventory().addItem(atItem);
+                                player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().AdmintoolsItemAdded);
+                            }
+                            else
+                            {
+                                player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().AdmintoolsItemAlreadyInInventory);
+                            }
+                        }
+                        else
+                        {
+                            player.sendMessage(AdminTools.getInstance().NoPerm);
+                        }
+                    }
+                    else
+                    {
+                        commandSender.sendMessage(AdminTools.getInstance().NoPlayer);
                     }
                 }
                 else

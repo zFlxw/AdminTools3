@@ -42,6 +42,9 @@ Settings:
   # Set this to false if you don't want to use the maintenance system of the plugin
   activateMaintenanceMotd: true
   # Choose if you want to change the motd, when maintenance is active
+  admintoolsItemName: '&cAdminTools GUI'
+  getAdmintoolsItemOnJoin: true
+  # Select if all players with the permission should get this item on join
   pingLightgreen: 40
   pingDarkgreen: 60
   pingLightred: 100
@@ -139,6 +142,8 @@ ChatMessages:
   toggleMsgMessage: '&aYou can now receive private messages'
   otherToggleMsgMessage: '&aYou can &cno longer &areceive private messages'
   noMsgMessage: '&cYou cannot send a private message to this player, because this player doens''t allow private messages'
+  adminitemAdded: '&aThe &cAdminTools GUI &awas added to your inventory'
+  adminitemAlreadyInInventory: '&cThe AdminTools GUI Item is already in your inventory'
 MaintenanceConfig:
   mainenanceMotdLine1: '&cMaintenance active'
   mainenanceMotdLine2: '&cchange this in the config'
