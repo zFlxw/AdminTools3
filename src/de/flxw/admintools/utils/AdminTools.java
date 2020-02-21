@@ -128,11 +128,19 @@ public class AdminTools extends JavaPlugin
     public String PublicTime;
     public String MsgReplyError;
     public String AdminchatMessage;
-    public String HatMessage;
-    public String NoLongerHatMessage;
-    public String OtherHatMessage;
-    public String OtherNoLongerHatMessage;
-    public String HatErrorMessage;
+    public String StatusMaintenance;
+    public String MaintenanceAdd;
+    public String MaintenanceRemove;
+    public String MaintenanceAlreadyOff;
+    public String MaintenanceAlreadyOn;
+    public String MaintenanceAlreadySet;
+    public String MaintenancePlayerNotSet;
+    public String MaintenanceOn;
+    public String MaintenanceOff;
+    public String NoMaintenanceModeSet;
+    public String ToggleMsgMessage;
+    public String OtherToggleMsgMessage;
+    public String NoMsgMessage;
     public String PERM_ALL = "admintools.*";
     public int resourceId = 68455;
     public int GiveawayCounter;
@@ -146,17 +154,26 @@ public class AdminTools extends JavaPlugin
     public boolean LogIP;
     public boolean DisableUpdateMessage;
     public boolean MySQLcon;
-    public String ToggleMsgMessage;
-    public String OtherToggleMsgMessage;
-    public String NoMsgMessage;
+    public boolean MaintenanceMode;
+    public boolean ActivateMaintenance;
+    public String MaintenanceMotdLine2;
+    public String MaintenanceMotdLine1;
+    public String MaintenanceKickHeader;
+    public String MaintenanceKickLine1;
+    public String MaintenanceKickLine2;
+    public String MaintenanceKickLine3;
+    public String MaintenanceKickFooter;
 
     @Override
     public void onEnable()
     {
         instance = this;
+        consoleMessage();
         FileManager.setStandardConfig();
+        FileManager.setMaintenanceConfig();
         FileManager.setMySQL();
         FileManager.readConfig();
+        FileManager.readMaintenance();
         FileManager.readMySQL();
         if(MySQLcon)
         {
@@ -169,7 +186,6 @@ public class AdminTools extends JavaPlugin
         }
         registerCommands();
         registerEvents();
-        consoleMessage();
     }
     @Override
     public void onDisable()
@@ -238,6 +254,7 @@ public class AdminTools extends JavaPlugin
         getCommand("day").setExecutor(new Command_Day(this));
         getCommand("night").setExecutor(new Command_Night(this));
         getCommand("togglemsg").setExecutor(new Command_ToggleMSG(this));
+        getCommand("maintenance").setExecutor(new Command_Maintenance(this));
     }
     public void consoleMessage()
     {

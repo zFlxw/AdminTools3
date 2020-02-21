@@ -17,10 +17,10 @@
 # %seconds% = remaining seconds
 # %skullowner% = this players skull
 # %speed% = speed value
+# %status% = status of maintenance
 # %time% = day or night time
 # %weather% = sunny or rain weather
 # These variables can only be used in messages that contain them by default!
-
 # ATTENTION: If you disable mysql, the ban and mute system will be disabled!
 # If you want to use apostrophes you need to use ''!
 mysql: true
@@ -31,15 +31,17 @@ ServerMessages:
   joinMessageTeam: '&7[&2AdminTools&7] &4%player% &ajoined the game'
   joinMessageNormal: '&7[&2AdminTools&7] &2%player% &ajoined the game'
   quitMessage: '&7[&2AdminTools&7] &2%player% &aleft the game'
-
 Prefixes:
   mainPrefix: '&7[&2AdminTools&7] '
   msgPrefix: '&7[&2MSG&7] '
   socialspyPrefix: '&7[&cSOCIALSPY&7] '
   banPrefix: '&7[&c&lBan&7] '
   mutePrefix: '&7[&c&lMute&7] '
-
 Settings:
+  activateMaintenance: true
+  # Set this to false if you don't want to use the maintenance system of the plugin
+  activateMaintenanceMotd: true
+  # Choose if you want to change the motd, when maintenance is active
   pingLightgreen: 40
   pingDarkgreen: 60
   pingLightred: 100
@@ -56,7 +58,6 @@ Settings:
   logIpAddress: true
   # Choose if the plugin should save the ip address of all players within the playerinfo database. If you change this, note that you have to delete the current table!!!
   disableUpdateMessageOnJoin: false
-
 ChatMessages:
   broadcastPrefix: '&7[&c&lBroadcast&7] &a'
   broadcastColorcodesWarning: '§cYour message probably contains color codes. Because you don''t have the permission to send colored broadcast messages the message hadn''t be colored'
@@ -138,13 +139,30 @@ ChatMessages:
   toggleMsgMessage: '&aYou can now receive private messages'
   otherToggleMsgMessage: '&aYou can &cno longer &areceive private messages'
   noMsgMessage: '&cYou cannot send a private message to this player, because this player doens''t allow private messages'
-
+MaintenanceConfig:
+  mainenanceMotdLine1: '&cMaintenance active'
+  mainenanceMotdLine2: '&cchange this in the config'
+  # If you put too many chars in one line, it will maybe buggy!
+  maintenanceStatusMessage: '&aThe current status of maintenance is: %status%'
+  maintenanceNoModeSetMessage: '&cError! No valid mode is set in config'
+  maintenanceOnMessage: '&aThe maintenance mode is now &2on'
+  maintenanceOffMessage: '&aThe maintenance mode is now &coff'
+  maintenanceAlreadyOnMessage: '&cThe maintenance mode is already &2on'
+  maintenanceAlreadyOffMessage: '&cThe maintenance mode is already &coff'
+  maintenancePlayerAddMessage: '&aThe player &6%player% &awas &2added &ato the whitelist'
+  maintenancePlayerRemoveMessage: '&aThe player &6%player% &awas &cremoved &afrom the whitelist'
+  maintenancePlayerNotSetMessage: '&aThe player &6%player% &ais &cnot &awhitelisted'
+  maintenancePlayerAlreadySetMessage: '&aThe player &6%player% &ais &calready &awhitelisted'
+  maintenanceKickHeader: '&8&m---------------[&c&l YOUR SERVER &8&m]---------------'
+  maintenanceKickLine1: '&aThe Server is currently in &4maintenance mode &aand will probably available on XX/XX/XXXX'
+  maintenanceKickLine2: '&3You can write something here'
+  maintenanceKickLine3: '&3You can write something here'
+  maintenanceKickFooter: '&cMaintenance Module &aof &2AdminTools &7| &aMade by &cFlxw &awith &c<3'
 KickConfig:
   allKickedMessage: '&aall players who don''t have the permission to kick were kicked.'
   kickHeader: '&7------[&cYOUR SERVER&7]-------'
   kickReason: '&cYou have been kicked for: &b%reason%'
   kickedBy: '&cKicked by: &b%kickedby%'
-
 BanConfig:
   banHeader: '&7------[&cYOUR SERVER&7]-------'
   banReason: '&cYou have been banned for: &b%reason%'
@@ -156,7 +174,6 @@ BanConfig:
   isNotBannedMessage: '&cThis player is not banned'
   unbanMessage: '&cYou unbanned the player &e%player%'
   cannotBanMessage: '&cYou can''t ban this player.'
-
 MuteMessages:
   mute: '&c You''re muted for %reason%. &cUnmute Date: &e%enddate%'
   staffMessage: '&c The player %player% is now muted for %reason%. Mutetime: %enddate%'
@@ -165,14 +182,12 @@ MuteMessages:
   isNotMuted: '&cThis player is not muted!'
   unmuteMessage: '&cYou unmuted the player &e%player%'
   cannotMuteMessage: '&cYou can''t mute this player.'
-
 GiveawayConfig:
   giveawaySeconds: 6
   giveawayStarted: '&7[&aGiveaway&7] &aYou started the giveaway of %price%'
   giveawayCountdown: '&7[&aGiveaway&7] &aGiveaway ends in &6%seconds% &aSeconds!'
   giveawayWinnerMessage: '&7[&aGiveaway&7] &aThe player &e%player% &awon the giveaway. Price: &c%price%'
   giveawayNotEnoughPlayers: '&7[&aGiveaway&7] You need at least 2 players'
-
 FreezeConfig:
   freezeTitle1: '&cYou are frozen!'
   freezeTitle2: '&cType something here'
