@@ -266,38 +266,38 @@ public class ATCenterInv
     }
     public static void AdminInvseePlayersInv(Player player)
     {
-        Player[] onlinePlayers = Bukkit.getOnlinePlayers().toArray(new Player[Bukkit.getOnlinePlayers().size()]);
-        Inventory playerInventory = Bukkit.createInventory(null, 9*5, "§cOnline players §7| §9Invsee");
-        if(!ArrayLists.inventoryIn.containsKey(player))
-        {
-            ArrayLists.inventoryIn.put(player, playerInventory);
-        }
-        else
-        {
-            player.sendMessage(AdminTools.getInstance().Prefix + "§cUnverified access. You're already in an inventory. If you think this is an error, contact an server administrator");
-            return;
-        }
-        for(Player all : Bukkit.getOnlinePlayers())
-        {
-            if(Bukkit.getOnlinePlayers().size() < 54)
-            {
-                String n = all.getName();
-
-                ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
-                SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
-
-                skullMeta.setDisplayName("§9" + n);
-                skullMeta.setOwner(n);
-                skull.setItemMeta(skullMeta);
-
-                playerInventory.addItem(skull);
-            } else {
-                player.sendMessage(AdminTools.getInstance().Prefix + "§cCurrently too many players online (max. 54) :/ I'm working on a solution that there isn't a playerlimit");
-                player.sendMessage(AdminTools.getInstance().Prefix + "§cUse: /invsee <Player>");
-            }
-        }
-        player.openInventory(playerInventory);
+    Player[] onlinePlayers = Bukkit.getOnlinePlayers().toArray(new Player[Bukkit.getOnlinePlayers().size()]);
+    Inventory playerInventory = Bukkit.createInventory(null, 9*5, "§cOnline players §7| §9Invsee");
+    if(!ArrayLists.inventoryIn.containsKey(player))
+    {
+        ArrayLists.inventoryIn.put(player, playerInventory);
     }
+    else
+    {
+        player.sendMessage(AdminTools.getInstance().Prefix + "§cUnverified access. You're already in an inventory. If you think this is an error, contact an server administrator");
+        return;
+    }
+    for(Player all : Bukkit.getOnlinePlayers())
+    {
+        if(Bukkit.getOnlinePlayers().size() < 54)
+        {
+            String n = all.getName();
+
+            ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
+            SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
+
+            skullMeta.setDisplayName("§9" + n);
+            skullMeta.setOwner(n);
+            skull.setItemMeta(skullMeta);
+
+            playerInventory.addItem(skull);
+        } else {
+            player.sendMessage(AdminTools.getInstance().Prefix + "§cCurrently too many players online (max. 54) :/ I'm working on a solution that there isn't a playerlimit");
+            player.sendMessage(AdminTools.getInstance().Prefix + "§cUse: /invsee <Player>");
+        }
+    }
+    player.openInventory(playerInventory);
+}
     public static void AdminBypassInv(Player player)
     {
         Inventory inventory = Bukkit.createInventory(null, 4*9, "§c§lAT Bypass §7| §9Page 1");
@@ -423,7 +423,6 @@ public class ATCenterInv
 
         player.openInventory(inventory);
     }
-
     public static void AdminPlayerControlInv(Player player)
     {
         Inventory inventory = Bukkit.createInventory(null, 54 ,"§cAT Player Control §7| §9" + PLUGIN_VERSION);
@@ -482,7 +481,6 @@ public class ATCenterInv
         player.openInventory(inventory);
 
     }
-
     public static void AdminServerControlInv(Player player)
     {
         Inventory inventory = Bukkit.createInventory(null, 54 ,"§cAT Server Control §7| §9" + PLUGIN_VERSION);
@@ -502,27 +500,27 @@ public class ATCenterInv
 
         ItemStack sOn = new ItemStack(Material.STAINED_GLASS_PANE,1, (byte) 5);
         ItemMeta mOn = sOn.getItemMeta();
-        mOn.setDisplayName("§a§lOn");
+        mOn.setDisplayName("§a§lOn (Whitelist)");
         sOn.setItemMeta(mOn);
 
         ItemStack sOff = new ItemStack(Material.STAINED_GLASS_PANE,1, (byte) 14);
         ItemMeta mOff = sOff.getItemMeta();
-        mOff.setDisplayName("§c§lOff");
+        mOff.setDisplayName("§c§lOff (Whitelist)");
         sOff.setItemMeta(mOff);
 
         ItemStack sAdd = new ItemStack(Material.SKULL_ITEM);
         ItemMeta mAdd = sAdd.getItemMeta();
-        mAdd.setDisplayName("§2Add Player");
+        mAdd.setDisplayName("§2Add Player (Whitelist)");
         sAdd.setItemMeta(mAdd);
 
         ItemStack sRemove = new ItemStack(Material.SKULL_ITEM, 1, (byte) 1);
         ItemMeta mRemove = sRemove.getItemMeta();
-        mRemove.setDisplayName("§cRemove Player");
+        mRemove.setDisplayName("§cRemove Player (Whitelist)");
         sRemove.setItemMeta(mRemove);
 
         ItemStack sList = new ItemStack(Material.BOOK);
         ItemMeta mList = sList.getItemMeta();
-        mList.setDisplayName("§9Whitelisted Players");
+        mList.setDisplayName("§9Whitelisted Players (Whitelist)");
         sList.setItemMeta(mList);
 
         ItemStack sBack = new ItemStack(Material.BARRIER);
@@ -530,17 +528,71 @@ public class ATCenterInv
         mBack.setDisplayName("§c§lBack");
         sBack.setItemMeta(mBack);
 
-        inventory.setItem(0, sWhitelist);
-        inventory.setItem(1, sOn);
-        inventory.setItem(2, sOff);
-        inventory.setItem(4, sAdd);
-        inventory.setItem(5, sRemove);
-        inventory.setItem(8, sList);
+        ItemStack sBlackPlaceholder = new ItemStack(Material.STAINED_GLASS_PANE,1,(byte)7);
+        ItemMeta mBlackPlaceholder = sBlackPlaceholder.getItemMeta();
+        mBlackPlaceholder.setDisplayName(" ");
+        sBlackPlaceholder.setItemMeta(mBlackPlaceholder);
+
+        ItemStack sGreyPlaceholder = new ItemStack(Material.STAINED_GLASS_PANE,1,(byte)8);
+        ItemMeta mGreyPlaceholder = sGreyPlaceholder.getItemMeta();
+        mGreyPlaceholder.setDisplayName(" ");
+        sGreyPlaceholder.setItemMeta(mGreyPlaceholder);
+
+
+        ItemStack sMaintenance = new ItemStack(Material.BLAZE_POWDER);
+        ItemMeta mMaintenance = sMaintenance.getItemMeta();
+        mMaintenance.setDisplayName("§9Maintenance §a§lon §9/ §c§loff");
+        sMaintenance.setItemMeta(mMaintenance);
+
+        ItemStack sMaintenanceOn = new ItemStack(Material.STAINED_GLASS_PANE,1, (byte) 5);
+        ItemMeta mMaintenanceOn = sMaintenanceOn.getItemMeta();
+        mMaintenanceOn.setDisplayName("§a§lOn (Maintenance)");
+        sMaintenanceOn.setItemMeta(mMaintenanceOn);
+
+        ItemStack sMaintenanceoff = new ItemStack(Material.STAINED_GLASS_PANE,1, (byte) 14);
+        ItemMeta mMaintenanceoff = sMaintenanceoff.getItemMeta();
+        mMaintenanceoff.setDisplayName("§c§lOff (Maintenance)");
+        sMaintenanceoff.setItemMeta(mMaintenanceoff);
+
+        ItemStack sMaintenanceadd = new ItemStack(Material.SKULL_ITEM);
+        ItemMeta mMaintenanceadd = sMaintenanceadd.getItemMeta();
+        mMaintenanceadd.setDisplayName("§2Add Player (Maintenance)");
+        sMaintenanceadd.setItemMeta(mMaintenanceadd);
+
+        ItemStack sMaintenanceremove = new ItemStack(Material.SKULL_ITEM, 1, (byte) 1);
+        ItemMeta mMaintenanceremove = sMaintenanceremove.getItemMeta();
+        mMaintenanceremove.setDisplayName("§cRemove Player (Maintenance)");
+        sMaintenanceremove.setItemMeta(mMaintenanceremove);
+
+        ItemStack sMaintenancelist = new ItemStack(Material.BOOK);
+        ItemMeta mMaintenancelist = sMaintenancelist.getItemMeta();
+        mMaintenancelist.setDisplayName("§9Whitelisted Players (Maintenance)");
+        sMaintenancelist.setItemMeta(mMaintenancelist);
+
+        for(int i = 0; i<54; i++)
+        {
+            inventory.setItem(i, sGreyPlaceholder);
+        }
+        inventory.setItem(9, sWhitelist);
+        inventory.setItem(10, sOn);
+        inventory.setItem(11, sOff);
+        inventory.setItem(13, sAdd);
+        inventory.setItem(14, sRemove);
+        inventory.setItem(17, sList);
+        for(int i = 18; i<27; i++)
+        {
+            inventory.setItem(i, sBlackPlaceholder);
+        }
+        inventory.setItem(27, sMaintenance);
+        inventory.setItem(28, sMaintenanceOn);
+        inventory.setItem(29, sMaintenanceoff);
+        inventory.setItem(31, sMaintenanceadd);
+        inventory.setItem(32, sMaintenanceremove);
+        inventory.setItem(35, sMaintenancelist);
 
         player.openInventory(inventory);
 
     }
-
     public static void AdminKillInv(Player player)
     {
         Player[] onlinePlayers = Bukkit.getOnlinePlayers().toArray(new Player[Bukkit.getOnlinePlayers().size()]);
@@ -573,10 +625,8 @@ public class ATCenterInv
         }
         player.openInventory(playerInventory);
     }
-
     public static void AdminAddPlayerInv(Player player)
     {
-        Player[] onlinePlayers = Bukkit.getOnlinePlayers().toArray(new Player[Bukkit.getOnlinePlayers().size()]);
         Inventory playerInventory = Bukkit.createInventory(null, 9*5, "§cAdd player §7| §9Whitelist");
         if(!ArrayLists.inventoryIn.containsKey(player))
         {
@@ -601,16 +651,14 @@ public class ATCenterInv
 
                 playerInventory.addItem(skull);
             } else {
-                player.sendMessage(AdminTools.getInstance().Prefix + "§cCurrently too many players online (max. 54) :/ I'm working on a solution that there isn't a playerlimit");
+                player.sendMessage(AdminTools.getInstance().Prefix + "§cCurrently too many players online (max. 54) :/");
                 player.sendMessage(AdminTools.getInstance().Prefix + "§cUse: /whitelist add <Player>");
             }
         }
         player.openInventory(playerInventory);
     }
-
     public static void AdminRemPlayerInv(Player player)
     {
-        Player[] onlinePlayers = Bukkit.getOnlinePlayers().toArray(new Player[Bukkit.getOnlinePlayers().size()]);
         Inventory playerInventory = Bukkit.createInventory(null, 9*5, "§cRemove player §7| §9Whitelist");
         if(!ArrayLists.inventoryIn.containsKey(player))
         {
@@ -635,8 +683,72 @@ public class ATCenterInv
 
                 playerInventory.addItem(skull);
             } else {
-                player.sendMessage(AdminTools.getInstance().Prefix + "§cCurrently too many players online (max. 54) :/ I'm working on a solution that there isn't a playerlimit");
+                player.sendMessage(AdminTools.getInstance().Prefix + "§cCurrently too many players online (max. 54)");
                 player.sendMessage(AdminTools.getInstance().Prefix + "§cUse: /whitelist remove <Player>");
+            }
+        }
+        player.openInventory(playerInventory);
+    }
+    public static void AdminMaintenanceAddPlayerInv(Player player)
+    {
+        Inventory playerInventory = Bukkit.createInventory(null, 9*5, "§cAdd player §7| §9Maintenance");
+        if(!ArrayLists.inventoryIn.containsKey(player))
+        {
+            ArrayLists.inventoryIn.put(player, playerInventory);
+        }
+        else
+        {
+            player.sendMessage(AdminTools.getInstance().Prefix + "§cUnverified access. You're already in an inventory. If you think this is an error, contact an server administrator");
+            return;
+        }
+        for(Player all : Bukkit.getOnlinePlayers()) {
+
+            if(Bukkit.getOnlinePlayers().size() <= 54) {
+                String n = all.getName();
+
+                ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
+                SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
+
+                skullMeta.setDisplayName("§9" + n);
+                skullMeta.setOwner(n);
+                skull.setItemMeta(skullMeta);
+
+                playerInventory.addItem(skull);
+            } else {
+                player.sendMessage(AdminTools.getInstance().Prefix + "§cCurrently too many players online (max. 54)");
+                player.sendMessage(AdminTools.getInstance().Prefix + "§cUse: /maintenance add <Player>");
+            }
+        }
+        player.openInventory(playerInventory);
+    }
+    public static void AdminMaintenanceRemPlayerInv(Player player)
+    {
+        Inventory playerInventory = Bukkit.createInventory(null, 9*5, "§cRem player §7| §9Maintenance");
+        if(!ArrayLists.inventoryIn.containsKey(player))
+        {
+            ArrayLists.inventoryIn.put(player, playerInventory);
+        }
+        else
+        {
+            player.sendMessage(AdminTools.getInstance().Prefix + "§cUnverified access. You're already in an inventory. If you think this is an error, contact an server administrator");
+            return;
+        }
+        for(Player all : Bukkit.getOnlinePlayers()) {
+
+            if(Bukkit.getOnlinePlayers().size() <= 54) {
+                String n = all.getName();
+
+                ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
+                SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
+
+                skullMeta.setDisplayName("§9" + n);
+                skullMeta.setOwner(n);
+                skull.setItemMeta(skullMeta);
+
+                playerInventory.addItem(skull);
+            } else {
+                player.sendMessage(AdminTools.getInstance().Prefix + "§cCurrently too many players online (max. 54) :/");
+                player.sendMessage(AdminTools.getInstance().Prefix + "§cUse: /maintenance remove <Player>");
             }
         }
         player.openInventory(playerInventory);

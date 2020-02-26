@@ -9,11 +9,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.yaml.snakeyaml.Yaml;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.function.BiConsumer;
 
 public class Command_Maintenance implements CommandExecutor
 {
@@ -140,6 +142,7 @@ public class Command_Maintenance implements CommandExecutor
                     commandSender.sendMessage("§8» §6/maintenance §7| §aChecks if the maintenance is enabled/disabled");
                     commandSender.sendMessage("§8» §6/maintenance on §7| §aenables maintenance");
                     commandSender.sendMessage("§8» §6/maintenance off §7| §adisables maintenance");
+                    commandSender.sendMessage("§8» §6/maintenance list §7| §ashows all member on the maintenance bypass list");
                     commandSender.sendMessage("§8» §6/maintenance add <player> §7| §aadd player to 'whitelist'");
                     commandSender.sendMessage("§8» §6/maintenance remove <player> §7| §aremove player from 'whitelist'");
                     commandSender.sendMessage("§7§m------------------[§c§l Maintenance Help §7§m]------------------");
@@ -147,6 +150,21 @@ public class Command_Maintenance implements CommandExecutor
                 else
                 {
                     commandSender.sendMessage(AdminTools.getInstance().NoPerm);
+                }
+            }
+            else if(args[0].equalsIgnoreCase("list"))
+            {
+                File file = FileManager.getMaintenanceFile();
+                FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+                commandSender.sendMessage(AdminTools.getInstance().Prefix + "§2Maintenance Whitelist:");
+                for(String key : cfg.getKeys(true))
+                {
+                    String value = cfg.getString(key);
+                    if(key.startsWith("Players."))
+                    {
+                        String playername = key.substring(8);
+                        commandSender.sendMessage(AdminTools.getInstance().Prefix + "§7- §a" + playername);
+                    }
                 }
             }
             else

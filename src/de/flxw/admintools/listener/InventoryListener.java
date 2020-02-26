@@ -6,10 +6,13 @@ import de.flxw.admintools.commands.Command_Lockchat;
 import de.flxw.admintools.utils.ATCenterInv;
 import de.flxw.admintools.utils.AdminTools;
 import de.flxw.admintools.utils.ArrayLists;
+import de.flxw.admintools.utils.FileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,6 +20,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.io.File;
 import java.util.*;
 
 public class InventoryListener implements Listener {
@@ -215,15 +219,15 @@ public class InventoryListener implements Listener {
                 {
                     if(ArrayLists.inventoryIn.containsKey(player) && ArrayLists.inventoryIn.get(player).getTitle().contains(evt.getClickedInventory().getTitle()))
                     {
-                        if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§a§lOn")) {
+                        if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§a§lOn (Whitelist)")) {
                             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "whitelist on");
                             player.sendMessage(AdminTools.getInstance().Prefix + "§aWhitelist on");
                         }
-                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§c§lOff")) {
+                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§c§lOff (Whitelist)")) {
                             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "whitelist off");
                             player.sendMessage(AdminTools.getInstance().Prefix + "§cWhitelist off");
                         }
-                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§2Add Player")) {
+                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§2Add Player (Whitelist)")) {
                             Timer timer = new Timer();
                             player.closeInventory();
                             timer.schedule(new TimerTask() {
@@ -233,7 +237,7 @@ public class InventoryListener implements Listener {
                                 }
                             }, 300);
                         }
-                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§cRemove Player")) {
+                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§cRemove Player (Whitelist)")) {
                             Timer timer = new Timer();
                             player.closeInventory();
                             timer.schedule(new TimerTask() {
@@ -243,7 +247,7 @@ public class InventoryListener implements Listener {
                                 }
                             }, 300);
                         }
-                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§9Whitelisted Players"))
+                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§9Whitelisted Players (Whitelist)"))
                         {
                             player.closeInventory();
 
@@ -251,6 +255,39 @@ public class InventoryListener implements Listener {
                             for(OfflinePlayer wl : Bukkit.getServer().getWhitelistedPlayers()) {
                                 player.sendMessage("§7- §9" + wl.getName());
                             }
+                        }
+                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§a§lOn (Maintenance)")) {
+                            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "maintenance on");
+                            player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().MaintenanceOn);
+                        }
+                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§c§lOff (Maintenance)")) {
+                            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "maintenance off");
+                            player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().MaintenanceOff);
+                        }
+                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§2Add Player (Maintenance)")) {
+                            Timer timer = new Timer();
+                            player.closeInventory();
+                            timer.schedule(new TimerTask() {
+                                @Override
+                                public void run() {
+                                    ATCenterInv.AdminMaintenanceAddPlayerInv(player);
+                                }
+                            }, 300);
+                        }
+                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§cRemove Player (Maintenance)")) {
+                            Timer timer = new Timer();
+                            player.closeInventory();
+                            timer.schedule(new TimerTask() {
+                                @Override
+                                public void run() {
+                                    ATCenterInv.AdminMaintenanceRemPlayerInv(player);
+                                }
+                            }, 300);
+                        }
+                        else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§9Whitelisted Players (Maintenance)"))
+                        {
+                            player.closeInventory();
+                            Bukkit.getServer().dispatchCommand(player, "maintenance list");
                         }
                         else if(evt.getCurrentItem().getItemMeta().getDisplayName().equals("§c§lBack")) {
                             player.closeInventory();
@@ -632,6 +669,62 @@ public class InventoryListener implements Listener {
                         else
                         {
                             player.sendMessage(AdminTools.getInstance().Prefix + "§cThis player is not whitelisted");
+                        }
+                        evt.setCancelled(true);
+                    }
+                    else
+                    {
+                        player.sendMessage(AdminTools.getInstance().Prefix + "§cUnverified access. Use /at");
+                        player.closeInventory();
+                    }
+                }
+            }
+            else if(evt.getClickedInventory().getName().equals("§cAdd player §7| §9Maintenance"))
+            {
+                if(evt.getCurrentItem() != null && evt.getCurrentItem().getItemMeta() != null)
+                {
+                    if(ArrayLists.inventoryIn.containsKey(player) && ArrayLists.inventoryIn.get(player).getTitle().contains(evt.getClickedInventory().getTitle()))
+                    {
+                        String playername = evt.getCurrentItem().getItemMeta().getDisplayName().replaceAll("§9", "");
+                        File file = FileManager.getMaintenanceFile();
+                        FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+                        if(!cfg.isSet("Players."+playername.toLowerCase()))
+                        {
+                            Bukkit.getServer().dispatchCommand(player, "maintenance add " + playername.toLowerCase());
+                            player.closeInventory();
+                        }
+                        else
+                        {
+                            player.closeInventory();
+                            player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().MaintenanceAlreadySet.replace("%player%",playername.toLowerCase()));
+                        }
+                        evt.setCancelled(true);
+                    }
+                    else
+                    {
+                        player.sendMessage(AdminTools.getInstance().Prefix + "§cUnverified access. Use /at");
+                        player.closeInventory();
+                    }
+                }
+            }
+            else if(evt.getClickedInventory().getName().equals("§cRem player §7| §9Maintenance"))
+            {
+                if(evt.getCurrentItem() != null && evt.getCurrentItem().getItemMeta() != null)
+                {
+                    if(ArrayLists.inventoryIn.containsKey(player) && ArrayLists.inventoryIn.get(player).getTitle().contains(evt.getClickedInventory().getTitle()))
+                    {
+                        String playername = evt.getCurrentItem().getItemMeta().getDisplayName().replaceAll("§9", "");
+                        File file = FileManager.getMaintenanceFile();
+                        FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+                        if(cfg.isSet("Players."+playername.toLowerCase()))
+                        {
+                            Bukkit.getServer().dispatchCommand(player, "maintenance remove " + playername.toLowerCase());
+                            player.closeInventory();
+                        }
+                        else
+                        {
+                            player.closeInventory();
+                            player.sendMessage(AdminTools.getInstance().Prefix + AdminTools.getInstance().MaintenancePlayerNotSet.replace("%player%",playername.toLowerCase()));
                         }
                         evt.setCancelled(true);
                     }
