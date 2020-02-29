@@ -173,6 +173,8 @@ public class FileManager {
             String admintoolsitemname = ChatColor.translateAlternateColorCodes('&', cfg.getString("Settings.admintoolsItemName"));
             String admintoolsitemadd = ChatColor.translateAlternateColorCodes('&', cfg.getString("ChatMessages.adminitemAdded"));
             String admintoolsitemalreadyin = ChatColor.translateAlternateColorCodes('&', cfg.getString("ChatMessages.adminitemAlreadyInInventory"));
+            String currentworldclear = ChatColor.translateAlternateColorCodes('&', cfg.getString("ChatMessages.entityCurrentWorldClearMessage"));
+            String allworldclear = ChatColor.translateAlternateColorCodes('&', cfg.getString("ChatMessages.entityAllWorldClearMessage"));
             boolean modt = cfg.getBoolean("Settings.modt");
             boolean unknown = cfg.getBoolean("Settings.unknownCommand");
             boolean mysql = cfg.getBoolean("mysql");
@@ -340,6 +342,8 @@ public class FileManager {
             AdminTools.getInstance().AdmintoolsItemAdded = admintoolsitemadd;
             AdminTools.getInstance().AdmintoolsItemAlreadyInInventory = admintoolsitemalreadyin;
             AdminTools.getInstance().GetAdmintoolsItemOnSpawn = getitemonjoin;
+            AdminTools.getInstance().CurrentWorldClearMessage = currentworldclear;
+            AdminTools.getInstance().AllWorldClearMessage = allworldclear;
         }
         catch (NullPointerException ex)
         {

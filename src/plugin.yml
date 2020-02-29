@@ -65,3 +65,5 @@ commands:
   night:
   togglemsg:
   maintenance:
+  clearentities:
+    aliases: [ce, butcher]

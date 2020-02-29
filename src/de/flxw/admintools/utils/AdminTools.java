@@ -169,6 +169,8 @@ public class AdminTools extends JavaPlugin
     public boolean MaintenanceMode;
     public boolean ActivateMaintenance;
     public boolean GetAdmintoolsItemOnSpawn;
+    public String CurrentWorldClearMessage;
+    public String AllWorldClearMessage;
 
     @Override
     public void onEnable()
@@ -263,6 +265,7 @@ public class AdminTools extends JavaPlugin
         getCommand("night").setExecutor(new Command_Night(this));
         getCommand("togglemsg").setExecutor(new Command_ToggleMSG(this));
         getCommand("maintenance").setExecutor(new Command_Maintenance(this));
+        getCommand("clearentities").setExecutor(new Command_ClearEntities(this));
     }
     public void consoleMessage()
     {

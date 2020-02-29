@@ -5,6 +5,7 @@
 #                                       VARIABLES
 # %bannedby% = player that banned the target
 # %bypass% = current bypass
+# %count% = number of entities
 # %gamemode% = current gamemode
 # %item% = current item (in hand e.g.)
 # %kickedby% = player that kicked the target
@@ -144,6 +145,8 @@ ChatMessages:
   noMsgMessage: '&cYou cannot send a private message to this player, because this player doens''t allow private messages'
   adminitemAdded: '&aThe &cAdminTools GUI &awas added to your inventory'
   adminitemAlreadyInInventory: '&cThe AdminTools GUI Item is already in your inventory'
+  entityCurrentWorldClearMessage: '&aAll entities on the current world were removed!: %count%'
+  entityAllWorldClearMessage: '&aAll entities on all worlds were removed!: %count%'
 MaintenanceConfig:
   mainenanceMotdLine1: '&cMaintenance active'
   mainenanceMotdLine2: '&cchange this in the config'
