@@ -7,8 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Date;
-
 public class AdminTools extends JavaPlugin
 {
     public static AdminTools instance;
@@ -153,6 +151,8 @@ public class AdminTools extends JavaPlugin
     public String AdmintoolsItemName;
     public String AdmintoolsItemAdded;
     public String AdmintoolsItemAlreadyInInventory;
+    public String CurrentWorldClearMessage;
+    public String AllWorldClearMessage;
     public String PERM_ALL = "admintools.*";
     public int resourceId = 68455;
     public int GiveawayCounter;
@@ -169,8 +169,6 @@ public class AdminTools extends JavaPlugin
     public boolean MaintenanceMode;
     public boolean ActivateMaintenance;
     public boolean GetAdmintoolsItemOnSpawn;
-    public String CurrentWorldClearMessage;
-    public String AllWorldClearMessage;
 
     @Override
     public void onEnable()
@@ -196,6 +194,7 @@ public class AdminTools extends JavaPlugin
         registerEvents();
 
     }
+
     @Override
     public void onDisable()
     {

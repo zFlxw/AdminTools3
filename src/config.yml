@@ -64,7 +64,7 @@ Settings:
   disableUpdateMessageOnJoin: false
 ChatMessages:
   broadcastPrefix: '&7[&c&lBroadcast&7] &a'
-  broadcastColorcodesWarning: '§cYour message probably contains color codes. Because you don''t have the permission to send colored broadcast messages the message hadn''t be colored'
+  broadcastColorcodesWarning: '&cYour message probably contains color codes. Because you don''t have the permission to send colored broadcast messages the message hadn''t be colored'
   pingMessage: '&aYour Ping: %ping%.'
   # dont use color codes for the ping variable
   bypassMessage: '&aYou''re now bypassing %bypass%'
@@ -195,7 +195,7 @@ GiveawayConfig:
   giveawayStarted: '&7[&aGiveaway&7] &aYou started the giveaway of %price%'
   giveawayCountdown: '&7[&aGiveaway&7] &aGiveaway ends in &6%seconds% &aSeconds!'
   giveawayWinnerMessage: '&7[&aGiveaway&7] &aThe player &e%player% &awon the giveaway. Price: &c%price%'
-  giveawayNotEnoughPlayers: '&7[&aGiveaway&7] You need at least 2 players'
+  giveawayNotEnoughPlayers: '&7[&aGiveaway&7] &cYou need at least 2 players'
 FreezeConfig:
   freezeTitle1: '&cYou are frozen!'
   freezeTitle2: '&cType something here'

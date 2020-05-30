@@ -19,21 +19,24 @@ public class ChatListener implements Listener {
     public static void onChat(AsyncPlayerChatEvent evt)
     {
         Player player = evt.getPlayer();
-        if(MuteManager.isMuted(player.getUniqueId().toString()))
+        if(AdminTools.getInstance().MySQLcon)
         {
-            long current = System.currentTimeMillis();
-            long end = MuteManager.getEnd(player.getUniqueId().toString());
+            if(MuteManager.isMuted(player.getUniqueId().toString()))
+            {
+                long current = System.currentTimeMillis();
+                long end = MuteManager.getEnd(player.getUniqueId().toString());
 
-            if(current < end || end == -1)
-            {
-                String muteMessage = AdminTools.getInstance().DisallowMessage.replaceAll("%reason%", MuteManager.getReason(player.getUniqueId().toString()));
-                muteMessage = muteMessage.replace("%enddate%", MuteManager.getUnbandate(player.getUniqueId().toString()));
-                player.sendMessage(muteMessage);
-                evt.setCancelled(true);
-            }
-            else
-            {
-                MuteManager.unmute(player.getUniqueId().toString());
+                if(current < end || end == -1)
+                {
+                    String muteMessage = AdminTools.getInstance().DisallowMessage.replaceAll("%reason%", MuteManager.getReason(player.getUniqueId().toString()));
+                    muteMessage = muteMessage.replace("%enddate%", MuteManager.getUnbandate(player.getUniqueId().toString()));
+                    player.sendMessage(muteMessage);
+                    evt.setCancelled(true);
+                }
+                else
+                {
+                    MuteManager.unmute(player.getUniqueId().toString());
+                }
             }
         }
 
